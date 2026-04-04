@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIO — Revenue Operating System for Hotels</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1e3c;--navy2:#152d56;--navy3:#1e3a6e;
+  --gold:#c8a84b;--gold2:#e8c96b;
+  --white:#ffffff;--off:#f7f5f0;--cream:#faf8f4;
+  --border:#dde3ef;--text:#0f1e3c;--mid:#3d5080;--dim:#7a8aaa;
+  --green:#16a34a;--red:#dc2626;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,30,60,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.2);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--white);letter-spacing:-0.5px;line-height:1}
+.nav-sub{font-size:9px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-left:1px solid rgba(200,168,75,0.4);padding-left:12px;margin-left:4px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--gold);color:var(--navy)!important;font-weight:700!important;padding:10px 22px;border-radius:4px;font-size:13px!important;transition:background 0.2s,transform 0.1s!important}
+.nav-cta:hover{background:var(--gold2)!important;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px 80px 80px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(200,168,75,0.08) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(30,58,110,0.6) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:76px;font-weight:600;color:var(--white);line-height:0.95;letter-spacing:-2px;margin-bottom:28px}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-p{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.75;max-width:520px;margin-bottom:44px;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:16px 36px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:0.03em;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,168,75,0.3)}
+.btn-ghost{color:rgba(255,255,255,0.75);font-size:14px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color 0.2s;padding:16px 0}
+.btn-ghost:hover{color:var(--white)}
+.btn-ghost svg{transition:transform 0.2s}
+.btn-ghost:hover svg{transform:translateX(4px)}
+.hero-proof{position:relative;z-index:2;margin-top:80px;display:flex;align-items:center;gap:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+.proof-stat{display:flex;flex-direction:column;gap:4px}
+.proof-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--white);line-height:1}
+.proof-label{font-size:11px;color:rgba(255,255,255,0.45);font-weight:500;letter-spacing:0.05em}
+.proof-divider{width:1px;height:40px;background:rgba(255,255,255,0.1)}
+
+/* PREVIEW */
+.preview-section{background:var(--navy2);padding:0 80px 80px;position:relative;overflow:hidden}
+.preview-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--cream))}
+.preview-window{background:var(--navy);border:1px solid rgba(200,168,75,0.2);border-radius:12px 12px 0 0;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.5);max-width:1100px;margin:0 auto}
+.preview-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.preview-dots{display:flex;gap:6px}
+.preview-dot{width:10px;height:10px;border-radius:50%}
+.preview-nav-items{display:flex}
+.pni{padding:0 18px;height:52px;display:flex;align-items:center;font-size:12px;font-weight:500;color:rgba(255,255,255,0.4);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.pni.active{color:var(--white);border-bottom-color:var(--gold)}
+.preview-badge{background:rgba(22,163,74,0.15);border:1px solid rgba(22,163,74,0.4);color:#4ade80;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.05em}
+.preview-body{padding:24px;background:#0d1a32}
+.preview-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.pkpi{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid;border-radius:6px;padding:14px 16px}
+.pkpi-label{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px}
+.pkpi-val{font-size:22px;font-weight:700;color:var(--white);font-family:'Cormorant Garamond',serif}
+.pkpi-sub{font-size:10px;color:rgba(255,255,255,0.3);margin-top:2px}
+.preview-charts{display:grid;grid-template-columns:3fr 2fr;gap:12px}
+.pchart{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:16px;height:160px;position:relative;overflow:hidden}
+.pchart-label{font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+.chart-svg{width:100%;height:100px;overflow:visible}
+
+/* SECTIONS */
+section{padding:100px 80px}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--navy);line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+.section-h2 em{font-style:italic;color:var(--gold)}
+.section-p{font-size:16px;color:var(--mid);line-height:1.75;max-width:520px;font-weight:300}
+
+/* PROBLEM */
+.problem{background:var(--cream)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.problem-cards{display:flex;flex-direction:column;gap:12px}
+.problem-card{background:var(--white);border:1px solid var(--border);border-left:3px solid;border-radius:6px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px}
+.pc-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.pc-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.pc-body{font-size:13px;color:var(--mid);line-height:1.6}
+
+/* HOW */
+.how{background:var(--navy);position:relative;overflow:hidden}
+.how::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.03) 1px,transparent 1px);background-size:80px 80px}
+.how .section-h2{color:var(--white)}
+.how .section-p{color:rgba(255,255,255,0.5)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;position:relative;z-index:1}
+.how-step{position:relative}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;color:rgba(200,168,75,0.15);line-height:1;margin-bottom:-8px}
+.step-line{width:40px;height:2px;background:var(--gold);margin-bottom:20px}
+.step-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:10px}
+.step-body{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300}
+.step-arrow{position:absolute;top:24px;right:-16px;color:rgba(200,168,75,0.3);font-size:20px}
+
+/* FEATURES */
+.features{background:var(--cream)}
+.features-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.feat-card{background:var(--white);padding:36px 32px;transition:background 0.2s}
+.feat-card:hover{background:var(--off)}
+.feat-icon{width:44px;height:44px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px}
+.feat-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.feat-body{font-size:13px;color:var(--mid);line-height:1.7;font-weight:300}
+.feat-tag{display:inline-block;margin-top:14px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:3px 10px;background:rgba(200,168,75,0.08);border:1px solid rgba(200,168,75,0.2);border-radius:20px}
+
+/* QUANT */
+.quant{background:var(--navy2);padding:80px;position:relative;overflow:hidden}
+.quant::after{content:'QUANT';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:220px;font-weight:700;color:rgba(255,255,255,0.02);line-height:1;pointer-events:none;white-space:nowrap}
+.quant-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.quant .section-h2{color:var(--white)}
+.quant .section-p{color:rgba(255,255,255,0.5);margin-bottom:32px}
+.quant-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.qpill{background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);color:var(--gold);font-size:11px;font-weight:600;padding:6px 14px;border-radius:20px;letter-spacing:0.05em}
+.quant-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.qm{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:24px}
+.qm-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--white);line-height:1;margin-bottom:6px}
+.qm-val span{font-size:20px;color:var(--gold)}
+.qm-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:500}
+
+/* COMPARE */
+.compare{background:var(--cream)}
+.compare-table{margin-top:60px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
+.ct-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--navy)}
+.ct-head div{padding:16px 24px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.ct-head div:first-child{color:rgba(255,255,255,0.4)}
+.ct-head div:nth-child(2){color:rgba(255,255,255,0.4);text-align:center}
+.ct-head div:nth-child(3){color:var(--gold);text-align:center;border-left:1px solid var(--gold)}
+.ct-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.ct-row:last-child{border-bottom:none}
+.ct-row div{padding:16px 24px;font-size:13px}
+.ct-row div:first-child{color:var(--mid);font-weight:500}
+.ct-row div:nth-child(2){text-align:center;display:flex;align-items:center;justify-content:center}
+.ct-row div:nth-child(3){text-align:center;border-left:1px solid rgba(200,168,75,0.2);display:flex;align-items:center;justify-content:center;background:rgba(200,168,75,0.03)}
+.ct-row:nth-child(odd) div:first-child,.ct-row:nth-child(odd) div:nth-child(2){background:#fafafa}
+.check{color:var(--green);font-size:16px;font-weight:700}
+.cross{color:var(--dim);font-size:16px}
+
+/* PRICING / GET STARTED */
+.pricing{background:var(--cream)}
+.pricing-grid{display:grid;gap:24px;margin-top:60px}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:40px 36px;position:relative;transition:transform 0.2s,box-shadow 0.2s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(15,30,60,0.1)}
+.price-card.featured{background:var(--navy);border-color:var(--gold);border-width:2px}
+.price-tier{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+.price-card:not(.featured) .price-tier{color:var(--dim)}
+.price-card.featured .price-tier{color:var(--gold)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:36px}
+.price-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
+.price-card:not(.featured) .price-features li{color:var(--mid)}
+.price-card.featured .price-features li{color:rgba(255,255,255,0.7)}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+.price-btn{display:block;width:100%;text-align:center;padding:16px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* PILOT CTA */
+.pilot{background:var(--navy);text-align:center;padding:100px 80px;position:relative;overflow:hidden}
+.pilot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(200,168,75,0.06) 0%,transparent 65%)}
+.pilot .section-eyebrow{justify-content:center}
+.pilot .section-eyebrow::before{display:none}
+.pilot .section-h2{color:var(--white);font-size:62px;max-width:700px;margin:0 auto 20px}
+.pilot .section-p{color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto 44px}
+.pilot-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.pilot-input{width:210px;padding:16px 20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:4px;font-size:14px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.pilot-input::placeholder{color:rgba(255,255,255,0.35)}
+.pilot-input:focus{border-color:var(--gold)}
+.pilot-textarea{width:100%;max-width:700px;padding:14px 20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:4px;font-size:14px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;resize:vertical;min-height:90px}
+.pilot-textarea::placeholder{color:rgba(255,255,255,0.35)}
+.pilot-textarea:focus{border-color:var(--gold)}
+.pilot-note{font-size:12px;color:rgba(255,255,255,0.3);margin-top:16px;position:relative;z-index:1}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(8,16,32,0.78);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;padding:16px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:48px;width:100%;max-width:560px;position:relative;transform:translateY(20px);transition:transform 0.25s;max-height:90vh;overflow-y:auto}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--dim);padding:6px 10px;border-radius:4px;transition:background 0.15s;line-height:1}
+.modal-close:hover{background:var(--off)}
+.modal-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.modal-eyebrow::before{content:'';display:block;width:16px;height:1px;background:var(--gold)}
+.modal-h{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--navy);line-height:1.1;margin-bottom:8px}
+.modal-sub{font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.6;font-weight:300}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-field{margin-bottom:14px}
+.modal-label{display:block;font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.modal-input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:4px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;background:var(--cream);transition:border-color 0.2s}
+.modal-input:focus{border-color:var(--navy3)}
+.modal-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:4px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;background:var(--cream);transition:border-color 0.2s;resize:vertical;min-height:110px}
+.modal-textarea:focus{border-color:var(--navy3)}
+.modal-submit{width:100%;margin-top:6px;padding:16px;background:var(--navy);color:var(--white);border:none;border-radius:4px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-submit:hover{background:var(--navy3)}
+.modal-note{font-size:11px;color:var(--dim);text-align:center;margin-top:12px}
+.modal-success{display:none;text-align:center;padding:32px 0 16px}
+.modal-success-icon{font-size:36px;color:var(--gold);margin-bottom:12px}
+.modal-success-h{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.modal-success-p{font-size:13px;color:var(--mid);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(200,168,75,0.15)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:32px}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--white);margin-bottom:8px}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:0.05em}
+.footer-links{display:flex;gap:40px}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:8px;transition:color 0.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-rule{width:40px;height:1px;background:var(--gold);margin-bottom:4px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;animation:fadeUp 0.7s ease forwards}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}.delay-4{animation-delay:0.4s}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .preview-kpis{grid-template-columns:repeat(2,1fr)}.preview-charts{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr 1fr}.how-steps{grid-template-columns:1fr 1fr}
+  .problem-grid,.features-intro,.quant-inner{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}.nav-links{gap:16px}.nav-links a:not(.nav-cta){display:none}
+  section,.hero,.preview-section,.quant,footer,.pilot{padding-left:20px;padding-right:20px}
+  .hero-h1{font-size:52px}.section-h2,.pilot .section-h2{font-size:40px}
+  .hero-proof{flex-direction:column;align-items:flex-start;gap:18px}.proof-divider{display:none}
+  .features-grid,.how-steps{grid-template-columns:1fr}
+  .footer-top,.footer-bottom{flex-direction:column;gap:24px;align-items:flex-start}
+  .footer-links{flex-direction:column;gap:24px}
+  .pilot-input{width:100%}.pilot-form{flex-direction:column;align-items:center}
+  .modal{padding:28px 20px}.modal-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ ENTERPRISE MODAL ═══ -->
+<div class="modal-overlay" id="enterpriseModal" onclick="closeModalOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+    <form id="enterpriseForm">
+      <div id="modalForm">
+        <div class="modal-eyebrow">Multi-property &amp; Enterprise</div>
+        <div class="modal-h">Let's talk about<br>your portfolio</div>
+        <p class="modal-sub">Tell us about your hotels and what you're looking for. We respond within one business day.</p>
+
+        <input type="hidden" name="form_type" value="enterprise enquiry">
+        <input type="hidden" name="_subject" value="New ARIO enterprise enquiry">
+
+        <div class="modal-row">
+          <div class="modal-field">
+            <label class="modal-label">Your name *</label>
+            <input class="modal-input" id="ent-name" name="name" type="text" placeholder="Jane Smith" required>
+          </div>
+          <div class="modal-field">
+            <label class="modal-label">Email address *</label>
+            <input class="modal-input" id="ent-email" name="email" type="email" placeholder="jane@hotelgroup.com" required>
+          </div>
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Hotel / Group name</label>
+          <input class="modal-input" id="ent-hotel" name="hotel_group" type="text" placeholder="e.g. Meridian Hotel Group">
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Number of properties</label>
+          <input class="modal-input" id="ent-props" name="properties_count" type="text" placeholder="e.g. 3 hotels across London">
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Tell us what you need</label>
+          <textarea class="modal-textarea" id="ent-note" name="notes" placeholder="What challenges are you facing? What does your current revenue management setup look like? Any specific integrations or requirements?"></textarea>
+        </div>
+        <button type="submit" class="modal-submit" id="enterpriseSubmitBtn">
+          Send message
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="modal-note">We respond within one business day.</p>
+      </div>
+    </form>
+
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">✦</div>
+      <div class="modal-success-h">Message received</div>
+      <p class="modal-success-p">Thank you — we'll review your details and be in touch within one business day.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">ARIO</div>
+    <div class="nav-sub">Operating System</div>
+  </div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Get started</a>
+    <a href="#pilot" class="nav-cta">Request Pilot →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">Revenue Intelligence for Hotels</div>
+    <h1 class="hero-h1 fade-up delay-1">Every metric.<br>A clear <em>action.</em></h1>
+    <p class="hero-p fade-up delay-2">ARIO replaces the spreadsheets, the guesswork, and the 4-hour morning routine. It tells you exactly what to do with your pricing — and why — before your competitors make their move.</p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#pilot" class="btn-primary">Request a 60-day pilot <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#features" class="btn-ghost">See how it works <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+  <div class="hero-proof fade-up delay-4">
+    <div class="proof-stat"><div class="proof-num">8%</div><div class="proof-label">Average RevPAR uplift</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="proof-num">75%</div><div class="proof-label">Reduction in manual tasks</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="proof-num">&lt;3 min</div><div class="proof-label">Group RFP decision time</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="proof-num">151×</div><div class="proof-label">Average ROI on ARIO cost</div></div>
+  </div>
+</section>
+
+<!-- ═══ PREVIEW ═══ -->
+<div class="preview-section">
+  <div class="preview-window reveal">
+    <div class="preview-bar">
+      <div class="preview-dots">
+        <div class="preview-dot" style="background:#ff5f57"></div>
+        <div class="preview-dot" style="background:#febc2e"></div>
+        <div class="preview-dot" style="background:#28c840"></div>
+      </div>
+      <div class="preview-nav-items">
+        <div class="pni active">Overview</div><div class="pni">Alerts (2)</div>
+        <div class="pni">Group Pricing</div><div class="pni">Demand Index</div>
+        <div class="pni">Forecast &amp; Strategy</div><div class="pni">Revenue Risk</div>
+      </div>
+      <div class="preview-badge">● ON PACE</div>
+    </div>
+    <div class="preview-body">
+      <div class="preview-kpis">
+        <div class="pkpi" style="border-top-color:#16a34a"><div class="pkpi-label">Occupancy tonight</div><div class="pkpi-val">94%</div><div class="pkpi-sub">Rooms occupied</div></div>
+        <div class="pkpi" style="border-top-color:#1e3a6e"><div class="pkpi-label">ADR tonight</div><div class="pkpi-val">£248</div><div class="pkpi-sub">Avg daily rate</div></div>
+        <div class="pkpi" style="border-top-color:#1e3a6e"><div class="pkpi-label">RevPAR</div><div class="pkpi-val">£233</div><div class="pkpi-sub">Per available room</div></div>
+        <div class="pkpi" style="border-top-color:#c8a84b"><div class="pkpi-label">MTD Revenue</div><div class="pkpi-val">£184k</div><div class="pkpi-sub">Month to date</div></div>
+        <div class="pkpi" style="border-top-color:#16a34a"><div class="pkpi-label">Booking Pace</div><div class="pkpi-val" style="color:#4ade80">106%</div><div class="pkpi-sub" style="color:#4ade80">On track</div></div>
+      </div>
+      <div class="preview-charts">
+        <div class="pchart">
+          <div class="pchart-label">14-Day Revenue Forecast — Projected vs Target</div>
+          <svg class="chart-svg" viewBox="0 0 600 90" preserveAspectRatio="none">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a6e" stop-opacity="0.4"/><stop offset="100%" stop-color="#1e3a6e" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,70 L43,65 L86,58 L129,50 L172,55 L215,42 L258,38 L301,30 L344,35 L387,25 L430,20 L473,28 L516,18 L559,12 L600,8 L600,90 L0,90 Z" fill="url(#g1)"/>
+            <path d="M0,70 L43,65 L86,58 L129,50 L172,55 L215,42 L258,38 L301,30 L344,35 L387,25 L430,20 L473,28 L516,18 L559,12 L600,8" fill="none" stroke="#1e3a6e" stroke-width="2"/>
+            <path d="M0,72 L600,45" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 3"/>
+          </svg>
+        </div>
+        <div class="pchart">
+          <div class="pchart-label">Occupancy Forecast — Next 14 days</div>
+          <svg class="chart-svg" viewBox="0 0 260 90" preserveAspectRatio="none">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#16a34a" stop-opacity="0.3"/><stop offset="100%" stop-color="#16a34a" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,30 L19,28 L37,22 L56,18 L74,25 L93,20 L111,15 L130,18 L148,12 L167,8 L185,14 L204,10 L222,6 L241,10 L260,8 L260,90 L0,90 Z" fill="url(#g2)"/>
+            <path d="M0,30 L19,28 L37,22 L56,18 L74,25 L93,20 L111,15 L130,18 L148,12 L167,8 L185,14 L204,10 L222,6 L241,10 L260,8" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <path d="M0,30 L260,30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROBLEM ═══ -->
+<section class="problem" id="problem">
+  <div class="reveal"><div class="section-eyebrow">The problem</div><div class="section-h2">Revenue management<br>is still <em>mostly manual</em></div></div>
+  <div class="problem-grid">
+    <div class="reveal">
+      <p class="section-p">The average revenue manager spends 20 hours a week on tasks that should take 5. Rate checks, competitor shopping, RFP calculations, forecast reports — all done by hand, in spreadsheets, across multiple tools that don't talk to each other.</p>
+      <p class="section-p" style="margin-top:16px">Meanwhile, the market moves. Competitors reprice. Demand signals shift. And the window to act closes before you've finished your morning data pull.</p>
+    </div>
+    <div class="problem-cards reveal">
+      <div class="problem-card" style="border-left-color:#dc2626"><div class="pc-icon">⏱</div><div><div class="pc-title">45 minutes every morning on rate checks</div><div class="pc-body">Manually pulling data from Opera, OTAs, and competitor sites before making a single pricing decision.</div></div></div>
+      <div class="problem-card" style="border-left-color:#d97706"><div class="pc-icon">📋</div><div><div class="pc-title">Group RFPs take 45–90 minutes each</div><div class="pc-body">Displacement calculations done in spreadsheets, with no real data on what transient demand you'd be giving up.</div></div></div>
+      <div class="problem-card" style="border-left-color:#d97706"><div class="pc-icon">📊</div><div><div class="pc-title">Competitor data without context</div><div class="pc-body">You can see their rates — but not whether they're panicking, yielding up, or following a deliberate strategy.</div></div></div>
+      <div class="problem-card" style="border-left-color:#7a8aaa"><div class="pc-icon">🧠</div><div><div class="pc-title">Institutional knowledge lives in people's heads</div><div class="pc-body">When a revenue manager leaves, so does every decision, pattern, and insight they built up over their tenure.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how" id="how">
+  <div class="reveal">
+    <div class="section-eyebrow" style="color:var(--gold)">How it works</div>
+    <div class="section-h2" style="color:var(--white)">From data to <em>decision</em><br>in under 3 minutes</div>
+    <p class="section-p">ARIO connects to your PMS, pulls live data, runs its models, and tells you exactly what to do — before you've finished your morning coffee.</p>
+  </div>
+  <div class="how-steps">
+    <div class="how-step reveal"><div class="step-num">01</div><div class="step-line"></div><div class="step-title">Connect your PMS</div><div class="step-body">ARIO integrates with Opera and pulls your live booking data, room inventory, and historical performance automatically.</div><div class="step-arrow">→</div></div>
+    <div class="how-step reveal"><div class="step-num">02</div><div class="step-line"></div><div class="step-title">Models run overnight</div><div class="step-body">Four quantitative models retrain nightly on your property's own data — demand forecasting, price elasticity, competitor strategy, and Bayesian live updates.</div><div class="step-arrow">→</div></div>
+    <div class="how-step reveal"><div class="step-num">03</div><div class="step-line"></div><div class="step-title">Alerts surface at 8am</div><div class="step-body">ARIO shows you what changed overnight, what's causing it (causal chain), and the single most impactful action to take.</div><div class="step-arrow">→</div></div>
+    <div class="how-step reveal"><div class="step-num">04</div><div class="step-line"></div><div class="step-title">You apply or override</div><div class="step-body">Every recommendation requires your approval. Apply it in one click, add a note, and ARIO logs it to your Decision Journal permanently.</div></div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="features" id="features">
+  <div class="features-intro">
+    <div class="reveal"><div class="section-eyebrow">What's inside</div><div class="section-h2">Built for the<br>way you <em>actually</em> work</div></div>
+    <div class="reveal"><p class="section-p">Every module in ARIO exists because a revenue manager needed it. Not a feature list built by engineers — a toolkit built from the ground up around the real daily workflow.</p></div>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feat-card"><div class="feat-icon">📈</div><div class="feat-title">Live Pace Engine</div><div class="feat-body">Real-time booking momentum tracking with automated causal chain analysis. Know not just that you're behind — but exactly why, ranked by impact.</div><div class="feat-tag">Core</div></div>
+    <div class="feat-card"><div class="feat-icon">🎯</div><div class="feat-title">Dynamic Pricing Engine</div><div class="feat-body">Six-step recommendation engine combining pace, demand forecast, price elasticity, competitor rates, and your guardrails — into a single clear rate recommendation.</div><div class="feat-tag">Core</div></div>
+    <div class="feat-card"><div class="feat-icon">🔍</div><div class="feat-title">Competitor Strategy Decoder</div><div class="feat-body">Reads competitor rate patterns and classifies their intent — distressed, yield-maximising, occupancy-driven, or reactive. Tells you what to do, not just what they're charging.</div><div class="feat-tag">Unique</div></div>
+    <div class="feat-card"><div class="feat-icon">👥</div><div class="feat-title">Group RFP Evaluator</div><div class="feat-body">Enter a group enquiry and get an optimal rate, displacement cost, and win probability in under 3 minutes. No more spreadsheet calculations.</div><div class="feat-tag">Core</div></div>
+    <div class="feat-card"><div class="feat-icon">📉</div><div class="feat-title">Unconstrained Demand</div><div class="feat-body">Corrects your historical data for the sellout effect — revealing the true demand your inventory was masking. Essential for confident rate increases.</div><div class="feat-tag">Quant</div></div>
+    <div class="feat-card"><div class="feat-icon">📓</div><div class="feat-title">Decision Journal</div><div class="feat-body">Every pricing decision logged with context, reasoning, and outcome. Full audit trail. Never lose institutional knowledge when a team member moves on.</div><div class="feat-tag">Unique</div></div>
+    <div class="feat-card"><div class="feat-icon">⚠️</div><div class="feat-title">Regret &amp; Spoilage Analysis</div><div class="feat-body">Quantifies the revenue lost to over-pricing (regret) and unsold rooms (spoilage) — and tells you which problem you're actually facing so you respond correctly.</div><div class="feat-tag">Quant</div></div>
+    <div class="feat-card"><div class="feat-icon">📅</div><div class="feat-title">Weekly Digest</div><div class="feat-body">A five-minute Friday briefing: what happened this week, what worked, what to prioritise next week. Structured, exportable, and ready for your GM.</div><div class="feat-tag">Core</div></div>
+    <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Automation Rules</div><div class="feat-body">Set ARIO to act automatically on specific triggers — yield-up at 85% occupancy, close-out at 95%, pace-based rate drops — all within your guardrails.</div><div class="feat-tag">Advanced</div></div>
+  </div>
+</section>
+
+<!-- ═══ QUANT ═══ -->
+<section class="quant">
+  <div class="quant-inner">
+    <div class="reveal">
+      <div class="section-eyebrow" style="color:var(--gold)">Quantitative foundation</div>
+      <div class="section-h2" style="color:var(--white)">The same models<br>used in <em>trading</em></div>
+      <p class="section-p">ARIO applies quantitative finance methodology to hotel revenue management. The same mathematical foundations used in institutional trading desks — applied to your room inventory.</p>
+      <div class="quant-pills">
+        <div class="qpill">Bayesian Demand Model</div><div class="qpill">AR(7) Autoregressive Forecast</div>
+        <div class="qpill">Value at Risk (VaR)</div><div class="qpill">Price Elasticity Curves</div>
+        <div class="qpill">EM Unconstrained Demand</div><div class="qpill">Monte Carlo Simulation</div>
+      </div>
+      <a href="#pilot" class="btn-primary" style="display:inline-flex">See it in action →</a>
+    </div>
+    <div class="quant-metrics reveal">
+      <div class="qm"><div class="qm-val">1,000<span> runs</span></div><div class="qm-label">Monte Carlo scenarios per revenue risk calculation</div></div>
+      <div class="qm"><div class="qm-val">4<span> models</span></div><div class="qm-label">Run simultaneously — weighted by data confidence</div></div>
+      <div class="qm"><div class="qm-val">02:00<span> am</span></div><div class="qm-label">Nightly model retrain after Opera night audit</div></div>
+      <div class="qm"><div class="qm-val">Live<span> updates</span></div><div class="qm-label">Bayesian model updates with every booking received</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPARE ═══ -->
+<section class="compare" id="compare">
+  <div class="reveal"><div class="section-eyebrow">Why ARIO</div><div class="section-h2">What you get that<br>others <em>don't give you</em></div></div>
+  <div class="compare-table reveal">
+    <div class="ct-head"><div>Capability</div><div>Traditional RMS</div><div>✦ ARIO</div></div>
+    <div class="ct-row"><div>Rate recommendations with plain-English reasoning</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Competitor strategy classification (not just rates)</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Causal chain alerts (what's causing the problem)</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Group RFP displacement calculator</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Unconstrained demand (EM algorithm)</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Revenue at risk (VaR-style confidence intervals)</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Decision Journal (permanent audit trail)</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Demand forecasting</div><div><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Dynamic pricing recommendations</div><div><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+    <div class="ct-row"><div>Accessible price for independent hotels</div><div><span class="cross">—</span></div><div><span class="check">✓</span></div></div>
+  </div>
+</section>
+
+<!-- ═══ GET STARTED ═══ -->
+<section class="pricing" id="pricing">
+  <div class="reveal" style="text-align:center">
+    <div class="section-eyebrow" style="justify-content:center;padding-left:28px">Get started</div>
+    <div class="section-h2" style="max-width:560px;margin:0 auto">Two ways to bring<br>ARIO to your <em>hotel</em></div>
+    <p class="section-p" style="max-width:420px;margin:12px auto 0">No contracts, no lock-in. Start with a pilot or talk to us about a tailored deployment.</p>
+  </div>
+  <div class="pricing-grid reveal" style="grid-template-columns:1fr 1fr;max-width:920px;margin:60px auto 0">
+
+    <div class="price-card featured" style="padding:48px 44px">
+      <div class="price-tier">60-Day Free Pilot</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--white);line-height:1.1;margin-bottom:12px">Try ARIO on your<br>own property's data</div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:32px;font-weight:300">Full access to every feature for 60 days. We handle the setup. No payment details required until you decide to continue.</p>
+      <ul class="price-features" style="margin-bottom:40px">
+        <li>Full platform access — every module</li>
+        <li>Live pace engine &amp; causal alerts</li>
+        <li>Dynamic pricing recommendations</li>
+        <li>Group RFP evaluator</li>
+        <li>Competitor strategy decoder</li>
+        <li>Demand forecast &amp; Revenue Risk</li>
+        <li>Decision Journal &amp; Weekly Digest</li>
+        <li>Onboarding &amp; setup included</li>
+      </ul>
+      <a href="#pilot" class="price-btn" style="background:var(--gold);color:var(--navy);padding:16px;font-size:14px;text-decoration:none;display:block;text-align:center;border-radius:4px;font-weight:700">Start my 60-day pilot →</a>
+      <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:14px;text-align:center">No credit card · No commitment · Setup in 30 minutes</p>
+    </div>
+
+    <div class="price-card" style="padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div class="price-tier">Multi-Property &amp; Enterprise</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--navy);line-height:1.1;margin-bottom:12px">Running more<br>than one hotel?</div>
+        <p style="font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:32px;font-weight:300">We work with hotel groups and management companies to deploy ARIO across multiple properties — with cross-portfolio analytics, shared competitive sets, and dedicated support.</p>
+        <ul class="price-features" style="margin-bottom:40px">
+          <li>2+ properties on one platform</li>
+          <li>Cross-property portfolio view</li>
+          <li>Shared competitive set &amp; benchmarks</li>
+          <li>Custom PMS integration support</li>
+          <li>Dedicated onboarding manager</li>
+          <li>Monthly strategy call included</li>
+          <li>SLA &amp; uptime guarantee</li>
+        </ul>
+      </div>
+      <div>
+        <button class="price-btn" onclick="openEnterpriseModal()" style="background:var(--navy);color:var(--white);padding:16px;font-size:14px">Talk to us →</button>
+        <p style="font-size:11px;color:var(--dim);margin-top:14px;text-align:center">We'll respond within one business day</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PILOT CTA ═══ -->
+<section class="pilot" id="pilot">
+  <div class="section-eyebrow">60-day free pilot</div>
+  <h2 class="section-h2">See it on your<br>own <em>property's data</em></h2>
+  <p class="section-p">We're currently onboarding pilot hotels. No payment, no commitment — just 60 days of ARIO running on your live data, with full support from day one.</p>
+
+  <form id="pilotForm">
+    <input type="hidden" name="form_type" value="pilot request">
+    <input type="hidden" name="_subject" value="New ARIO pilot request">
+
+    <div class="pilot-form" id="pilotStep1">
+      <input class="pilot-input" id="p-name" name="name" type="text" placeholder="Your name" required>
+      <input class="pilot-input" id="p-hotel" name="hotel" type="text" placeholder="Hotel name">
+      <input class="pilot-input" id="p-email" name="email" type="email" placeholder="Email address" required>
+      <button type="button" class="btn-primary" onclick="showPilotNote()">
+        Request access
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div id="pilotStep2" style="display:none;position:relative;z-index:1;width:100%;max-width:700px;margin:0 auto">
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px">One last thing — anything you'd like us to know before we reach out? <span style="opacity:0.5">(optional)</span></p>
+      <textarea class="pilot-textarea" id="p-note" name="notes" placeholder="e.g. current PMS, number of rooms, what you're hoping ARIO will help with..."></textarea>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+        <button type="submit" class="btn-primary" id="pilotSubmitBtn">
+          Send my request →
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" onclick="submitPilot()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);padding:16px 24px;border-radius:4px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif">Skip →</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="pilotSuccess" style="display:none;position:relative;z-index:1">
+    <div style="font-size:32px;color:var(--gold);margin-bottom:12px">✦</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--white);margin-bottom:10px">Request received</div>
+    <p style="font-size:14px;color:rgba(255,255,255,0.5);max-width:420px;margin:0 auto">We'll be in touch within one business day to get your pilot set up. Keep an eye on your inbox.</p>
+  </div>
+
+  <p class="pilot-note" id="pilotNote">No credit card required · 60 days free · Cancel any time · Setup in under 30 minutes</p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-rule"></div>
+      <div class="footer-brand">ARIO</div>
+      <div class="footer-tagline">Revenue Operating System · Built for Independent Hotels</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a><a href="#how">How it works</a>
+        <a href="#pricing">Get started</a><a href="#pilot">Pilot programme</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Revenue Manager's Guide</a>
+        <a href="#">ROI Calculator</a><a href="#">Documentation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@ario.io">hello@ario.io</a>
+        <a href="mailto:pilot@ario.io">pilot@ario.io</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 ARIO. All rights reserved.</div>
+    <div class="footer-copy">Every metric. A clear action.</div>
+  </div>
+</footer>
+
+<script>
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqegynad";
+
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),80); });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+document.querySelectorAll('.features-grid .feat-card,.how-steps .how-step,.pricing-grid .price-card,.problem-cards .problem-card').forEach((el,i)=>{
+  el.style.transitionDelay=(i%3)*0.08+'s';
+});
+
+// ── NAV ACTIVE ──
+const navLinks=document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  navLinks.forEach(l=>{l.style.color=l.getAttribute('href')==='#'+cur?'#fff':'rgba(255,255,255,0.65)';});
+});
+
+// ── ENTERPRISE MODAL ──
+function openEnterpriseModal(){
+  document.getElementById('enterpriseModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('enterpriseModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOverlay(e){
+  if(e.target===document.getElementById('enterpriseModal')) closeModal();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+async function postToFormspree(data){
+  const response = await fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  });
+
+  if (!response.ok) {
+    throw new Error('Form submission failed');
+  }
+
+  return response;
+}
+
+document.getElementById('enterpriseForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const submitBtn = document.getElementById('enterpriseSubmitBtn');
+  const originalHtml = submitBtn.innerHTML;
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending...';
+
+  try {
+    const formData = new FormData(this);
+    await postToFormspree(formData);
+    document.getElementById('modalForm').style.display='none';
+    document.getElementById('modalSuccess').style.display='block';
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalHtml;
+  }
+});
+
+// ── PILOT FORM ──
+function showPilotNote(){
+  const name=document.getElementById('p-name').value.trim();
+  const email=document.getElementById('p-email').value.trim();
+
+  document.getElementById('p-name').style.borderColor = name ? '' : '#dc2626';
+  document.getElementById('p-email').style.borderColor = email ? '' : '#dc2626';
+
+  if(!name || !email) return;
+
+  document.getElementById('pilotStep1').style.display='none';
+  document.getElementById('pilotStep2').style.display='block';
+  document.getElementById('pilotStep2').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+document.getElementById('pilotForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  await submitPilot();
+});
+
+async function submitPilot(){
+  const name=document.getElementById('p-name').value.trim();
+  const email=document.getElementById('p-email').value.trim();
+  const submitBtn=document.getElementById('pilotSubmitBtn');
+
+  if(!name || !email){
+    document.getElementById('p-name').style.borderColor = name ? '' : '#dc2626';
+    document.getElementById('p-email').style.borderColor = email ? '' : '#dc2626';
+    document.getElementById('pilotStep1').style.display='flex';
+    document.getElementById('pilotStep2').style.display='none';
+    return;
+  }
+
+  const originalHtml = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending...';
+
+  try {
+    const formData = new FormData(document.getElementById('pilotForm'));
+    await postToFormspree(formData);
+
+    document.getElementById('pilotStep1').style.display='none';
+    document.getElementById('pilotStep2').style.display='none';
+    document.getElementById('pilotNote').style.display='none';
+    document.getElementById('pilotSuccess').style.display='block';
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalHtml;
+  }
+}
+</script>
+</body>
+</html>
