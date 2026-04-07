@@ -604,6 +604,11 @@
         <div class="metric-sub">Displacement model calculates instantly</div>
       </div>
       <div class="metric-cell">
+        <div class="metric-label">OTA commission saving</div>
+        <div class="metric-value positive" id="ota-saving">£0</div>
+        <div class="metric-sub">From 5% direct booking shift</div>
+      </div>
+      <div class="metric-cell">
         <div class="metric-label">Rate decisions per week</div>
         <div class="metric-value positive">15–25</div>
         <div class="metric-sub">Data-driven, explained, logged</div>
@@ -752,7 +757,7 @@ function calc() {
   const newRevpar = revpar * upliftFactor;
   const newAnnualRev = newRevpar * rooms * 365;
   const directShift = 0.05; // 5% shift from OTA to direct
-  const otaSaving = 0;
+  const otaSaving = annualRev * directShift * 0.165;
   const newTimePerWeek = Math.round(timePerWeek * 0.4); // 75% reduction
 
   document.getElementById('rev-with').textContent = fmt(newAnnualRev);
