@@ -262,7 +262,7 @@
   /* Impact cards */
   .impact-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 14px;
     margin-bottom: 28px;
   }
@@ -518,15 +518,6 @@
         <input type="number" id="rfps" value="8" min="0" max="100" oninput="calc()">
       </div>
     </div>
-    <div class="input-card">
-      <label>OTA booking share (%)</label>
-      <input type="range" id="ota" min="10" max="90" value="55" oninput="calc()">
-      <div class="range-labels">
-        <span>10%</span>
-        <span id="ota-val" style="font-weight:700;color:var(--navy2)">55%</span>
-        <span>90%</span>
-      </div>
-    </div>
   </div>
 
   <!-- COMPARISON TABLE -->
@@ -556,11 +547,7 @@
         <div class="metric-value">45–90 min</div>
         <div class="metric-sub">Per RFP, manual calculation</div>
       </div>
-      <div class="metric-cell">
-        <div class="metric-label">OTA commission cost</div>
-        <div class="metric-value" id="ota-cost-without">£0</div>
-        <div class="metric-sub">At 16.5% avg commission</div>
-      </div>
+
       <div class="metric-cell">
         <div class="metric-label">Rate decisions per week</div>
         <div class="metric-value">3–5</div>
@@ -603,11 +590,7 @@
         <div class="metric-value positive">Under 3 min</div>
         <div class="metric-sub">Displacement model calculates instantly</div>
       </div>
-      <div class="metric-cell">
-        <div class="metric-label">OTA commission saving</div>
-        <div class="metric-value positive" id="ota-saving">£0</div>
-        <div class="metric-sub">From 5% direct booking shift</div>
-      </div>
+
       <div class="metric-cell">
         <div class="metric-label">Rate decisions per week</div>
         <div class="metric-value positive">15–25</div>
@@ -629,11 +612,6 @@
       <div class="impact-value" id="impact-rev">£0</div>
       <div class="impact-sub">From improved rate decisions</div>
     </div>
-    <div class="impact-card success">
-      <div class="impact-label">OTA commission saved</div>
-      <div class="impact-value" id="impact-ota">£0</div>
-      <div class="impact-sub">From 5% direct shift</div>
-    </div>
     <div class="impact-card gold-card">
       <div class="impact-label">Time saved per year</div>
       <div class="impact-value" id="impact-time">0 days</div>
@@ -641,7 +619,7 @@
     </div>
     <div class="impact-card neutral">
       <div class="impact-label">ARIO annual cost</div>
-      <div class="impact-value" style="color:var(--navy2)" id="impact-cost">£3,588</div>
+      <div class="impact-value" style="color:var(--navy2)" id="impact-cost">£11,400</div>
       <div class="impact-sub">At £950/month starter plan</div>
     </div>
   </div>
@@ -657,7 +635,7 @@
       <div class="time-row">
         <div class="time-task">Morning rate check</div>
         <div class="bar-wrap">
-          <div class="bar-without" style="width:50-60%"></div>
+          <div class="bar-without" style="width:75%"></div>
           <div class="bar-with" style="width:10%"></div>
         </div>
         <div class="time-val">45m → 5m</div>
@@ -703,7 +681,7 @@
     <div class="roi-item">
       <div class="roi-label">Total annual return</div>
       <div class="roi-value" id="roi-total">£0</div>
-      <div class="roi-sub">Revenue uplift + commission saving</div>
+      <div class="roi-sub">From improved rate decisions</div>
     </div>
     <div class="roi-item">
       <div class="roi-label">Return on investment</div>
@@ -718,8 +696,7 @@
   </div>
 
   <div class="disclaimer">
-    Estimates based on industry benchmarks: 8% RevPAR uplift from RMS adoption (STR/HotStats 2024), 5% direct booking shift, 16.5% avg OTA commission.
-    Actual results vary by property. ARIO pilot available free for 60 days.
+    Estimates based on industry benchmarks: 8% RevPAR uplift from RMS adoption (STR/HotStats 2024). Actual results vary by property. ARIO pilot available free for 60 days.
   </div>
 
 </div>
@@ -735,39 +712,37 @@ function calc() {
   const occ = parseInt(document.getElementById('occ').value) || 78;
   const hours = parseInt(document.getElementById('hours').value) || 4;
   const rfps = parseInt(document.getElementById('rfps').value) || 8;
-  const otaPct = parseInt(document.getElementById('ota').value) || 55;
+
 
   document.getElementById('occ-val').textContent = occ + '%';
   document.getElementById('hours-val').textContent = hours + 'hrs';
-  document.getElementById('ota-val').textContent = otaPct + '%';
 
   // Without ARIO
   const revpar = adr * (occ / 100);
   const annualRev = revpar * rooms * 365;
-  const otaCost = annualRev * (otaPct / 100) * 0.165;
+
   const timePerWeek = hours * 5; // working days
 
   document.getElementById('rev-without').textContent = fmt(annualRev);
   document.getElementById('revpar-without').textContent = fmt(revpar);
   document.getElementById('time-without').textContent = timePerWeek + ' hrs/wk';
-  document.getElementById('ota-cost-without').textContent = fmt(otaCost);
+
 
   // With ARIO — conservative 8% RevPAR improvement
   const upliftFactor = 1.08;
   const newRevpar = revpar * upliftFactor;
   const newAnnualRev = newRevpar * rooms * 365;
-  const directShift = 0.05; // 5% shift from OTA to direct
-  const otaSaving = annualRev * directShift * 0.165;
-  const newTimePerWeek = Math.round(timePerWeek * 0.4); // 75% reduction
+  const otaSaving = 0;
+  const newTimePerWeek = Math.round(timePerWeek * 0.25); // 75% reduction
 
   document.getElementById('rev-with').textContent = fmt(newAnnualRev);
   document.getElementById('revpar-with').textContent = fmt(newRevpar);
   document.getElementById('time-with').textContent = newTimePerWeek + ' hrs/wk';
-  document.getElementById('ota-saving').textContent = fmt(otaSaving);
+
 
   // Impact
   const revUplift = newAnnualRev - annualRev;
-  const totalReturn = revUplift + otaSaving;
+  const totalReturn = revUplift;
   const arioCost = 950 * 12;
   const roi = totalReturn / arioCost;
   const timeSavedHrsYear = (timePerWeek - newTimePerWeek) * 52;
@@ -775,7 +750,7 @@ function calc() {
   const paybackDays = Math.round(arioCost / (totalReturn / 365));
 
   document.getElementById('impact-rev').textContent = fmt(revUplift);
-  document.getElementById('impact-ota').textContent = fmt(otaSaving);
+
   document.getElementById('impact-time').textContent = timeSavedDays + ' days';
   document.getElementById('impact-cost').textContent = fmt(arioCost);
 
