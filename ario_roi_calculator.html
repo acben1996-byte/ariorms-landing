@@ -757,7 +757,7 @@ function calc() {
   const newRevpar = revpar * upliftFactor;
   const newAnnualRev = newRevpar * rooms * 365;
   const directShift = 0.05; // 5% shift from OTA to direct
-  const otaSaving = annualRev * directShift * 0.165;
+  const otaSaving = 0;
   const newTimePerWeek = Math.round(timePerWeek * 0.4); // 75% reduction
 
   document.getElementById('rev-with').textContent = fmt(newAnnualRev);
