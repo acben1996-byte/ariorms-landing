@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #152d56;
+    --navy2: #1e3a6e;
+    --navy3: #2a4f96;
+    --gold: #c8a84b;
+    --gold2: #e8c96b;
+    --white: #ffffff;
+    --bg: #f4f6f9;
+    --border: #e2e7f0;
+    --text: #1a2540;
+    --textmid: #3d5080;
+    --textdim: #7a8aaa;
+    --green: #16a34a;
+    --greenbg: #f0fdf4;
+    --greenborder: #86efac;
+    --red: #dc2626;
+    --redbg: #fef2f2;
+    --amber: #d97706;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #1a3a7a 100%);
+    padding: 40px 40px 32px;
+    border-bottom: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,75,0.12) 0%, transparent 70%);
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+  }
+
+  .main {
+    padding: 28px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--textdim);
+    margin-bottom: 14px;
+  }
+
+  .inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .input-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+
+  .input-card label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--textdim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .input-row span {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy2);
+  }
+
+  .input-card input[type="number"] {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    background: var(--bg);
+    width: 100%;
+  }
+
+  .input-card input[type="number"]:focus {
+    border-color: var(--navy3);
+  }
+
+  .input-card input[type="range"] {
+    width: 100%;
+    accent-color: var(--navy2);
+    margin-top: 6px;
+  }
+
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--textdim);
+    margin-top: 2px;
+  }
+
+  /* Comparison section */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin-bottom: 28px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(21,45,86,0.08);
+  }
+
+  .col-header {
+    padding: 14px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .col-without { background: #fafafa; border-right: 1px solid var(--border); }
+  .col-without .col-header { color: var(--textdim); border-bottom: 2px solid var(--border); }
+
+  .col-with { background: var(--navy); }
+  .col-with .col-header { color: var(--gold); border-bottom: 2px solid var(--gold); }
+
+  .col-divider {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .vs-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .metric-row {
+    display: contents;
+  }
+
+  .metric-cell {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .col-without .metric-cell { background: #fafafa; }
+  .col-with .metric-cell { background: var(--navy2); border-bottom-color: rgba(255,255,255,0.08); }
+
+  .metric-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .col-without .metric-label { color: var(--textdim); }
+  .col-with .metric-label { color: rgba(255,255,255,0.5); }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .col-without .metric-value { color: var(--text); }
+  .col-with .metric-value { color: white; }
+
+  .metric-value.positive { color: var(--green); }
+  .metric-value.gold { color: var(--gold2); }
+
+  .metric-sub {
+    font-size: 11px;
+  }
+  .col-without .metric-sub { color: var(--textdim); }
+  .col-with .metric-sub { color: rgba(255,255,255,0.5); }
+
+  .divider-line {
+    width: 1px;
+    height: 100%;
+    background: var(--border);
+    flex: 1;
+  }
+
+  .divider-icon {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  /* Impact cards */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .impact-card {
+    border-radius: 8px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-card.primary {
+    background: var(--navy);
+    color: white;
+    border: 1px solid var(--navy3);
+  }
+
+  .impact-card.success {
+    background: var(--greenbg);
+    border: 1px solid var(--greenborder);
+  }
+
+  .impact-card.gold-card {
+    background: linear-gradient(135deg, #fffbeb, #fef9e7);
+    border: 1px solid #fcd34d;
+  }
+
+  .impact-card.neutral {
+    background: white;
+    border: 1px solid var(--border);
+  }
+
+  .impact-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .impact-card.primary .impact-label { color: var(--gold); }
+  .impact-card.success .impact-label { color: var(--green); }
+  .impact-card.gold-card .impact-label { color: #92400e; }
+  .impact-card.neutral .impact-label { color: var(--textdim); }
+
+  .impact-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .impact-card.primary .impact-value { color: white; }
+  .impact-card.success .impact-value { color: var(--green); }
+  .impact-card.gold-card .impact-value { color: #92400e; }
+  .impact-card.neutral .impact-value { color: var(--text); }
+
+  .impact-sub {
+    font-size: 11px;
+  }
+  .impact-card.primary .impact-sub { color: rgba(255,255,255,0.6); }
+  .impact-card.success .impact-sub { color: #166534; }
+  .impact-card.gold-card .impact-sub { color: #92400e; }
+  .impact-card.neutral .impact-sub { color: var(--textdim); }
+
+  /* Time comparison */
+  .time-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 28px;
+  }
+
+  .time-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .time-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .time-task {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--textmid);
+  }
+
+  .bar-wrap {
+    height: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-without {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: #cbd5e1;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+
+  .bar-with {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+    opacity: 0.9;
+  }
+
+  .time-val {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--textmid);
+    text-align: right;
+  }
+
+  /* ROI summary */
+  .roi-summary {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    border-radius: 10px;
+    padding: 28px 32px;
+    border: 1px solid var(--navy3);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roi-summary::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,75,0.15) 0%, transparent 70%);
+  }
+
+  .roi-item { position: relative; }
+
+  .roi-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .roi-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: white;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .roi-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .disclaimer {
+    font-size: 11px;
+    color: var(--textdim);
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 8px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--textdim);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">ARIO · Internal ROI Calculator</div>
+  <h1>Without ARIO vs With ARIO</h1>
+  <p>Enter your hotel's current figures to see the estimated revenue and time impact of deploying ARIO.</p>
+</div>
+
+<div class="main">
+
+  <!-- INPUTS -->
+  <div class="section-label">Your Hotel Profile</div>
+  <div class="inputs-grid">
+    <div class="input-card">
+      <label>Total rooms</label>
+      <div class="input-row">
+        <input type="number" id="rooms" value="120" min="10" max="1000" oninput="calc()">
+      </div>
+    </div>
+    <div class="input-card">
+      <label>Current ADR (£)</label>
+      <div class="input-row">
+        <span>£</span>
+        <input type="number" id="adr" value="180" min="50" max="2000" oninput="calc()">
+      </div>
+    </div>
+    <div class="input-card">
+      <label>Current Occupancy (%)</label>
+      <input type="range" id="occ" min="30" max="100" value="78" oninput="calc()">
+      <div class="range-labels">
+        <span>30%</span>
+        <span id="occ-val" style="font-weight:700;color:var(--navy2)">78%</span>
+        <span>100%</span>
+      </div>
+    </div>
+    <div class="input-card">
+      <label>Revenue manager hours/day on manual tasks</label>
+      <input type="range" id="hours" min="1" max="8" value="4" oninput="calc()">
+      <div class="range-labels">
+        <span>1hr</span>
+        <span id="hours-val" style="font-weight:700;color:var(--navy2)">4hrs</span>
+        <span>8hrs</span>
+      </div>
+    </div>
+    <div class="input-card">
+      <label>Group RFPs per month</label>
+      <div class="input-row">
+        <input type="number" id="rfps" value="8" min="0" max="100" oninput="calc()">
+      </div>
+    </div>
+    <div class="input-card">
+      <label>OTA booking share (%)</label>
+      <input type="range" id="ota" min="10" max="90" value="55" oninput="calc()">
+      <div class="range-labels">
+        <span>10%</span>
+        <span id="ota-val" style="font-weight:700;color:var(--navy2)">55%</span>
+        <span>90%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-label">Side-by-Side Comparison</div>
+  <div class="comparison">
+
+    <!-- WITHOUT -->
+    <div class="col-without">
+      <div class="col-header">❌ Without ARIO</div>
+      <div class="metric-cell">
+        <div class="metric-label">Annual Revenue</div>
+        <div class="metric-value" id="rev-without">£0</div>
+        <div class="metric-sub">Based on current ADR & occupancy</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">RevPAR</div>
+        <div class="metric-value" id="revpar-without">£0</div>
+        <div class="metric-sub">Revenue per available room</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Time on manual tasks</div>
+        <div class="metric-value" id="time-without">0 hrs</div>
+        <div class="metric-sub">Per week across tools</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Group RFP decision time</div>
+        <div class="metric-value">45–90 min</div>
+        <div class="metric-sub">Per RFP, manual calculation</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">OTA commission cost</div>
+        <div class="metric-value" id="ota-cost-without">£0</div>
+        <div class="metric-sub">At 16.5% avg commission</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Rate decisions per week</div>
+        <div class="metric-value">3–5</div>
+        <div class="metric-sub">Reactive, gut-feel based</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Institutional memory</div>
+        <div class="metric-value" style="font-size:16px;padding-top:4px">In people's heads</div>
+        <div class="metric-sub">Lost when staff leave</div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="col-divider">
+      <div class="divider-line"></div>
+      <div class="vs-badge">VS</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- WITH ARIO -->
+    <div class="col-with">
+      <div class="col-header">✦ With ARIO</div>
+      <div class="metric-cell">
+        <div class="metric-label">Projected Annual Revenue</div>
+        <div class="metric-value gold" id="rev-with">£0</div>
+        <div class="metric-sub" style="color:rgba(255,255,255,0.5)">Estimated at +8% RevPAR uplift</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Projected RevPAR</div>
+        <div class="metric-value gold" id="revpar-with">£0</div>
+        <div class="metric-sub">After optimised pricing decisions</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Time on manual tasks</div>
+        <div class="metric-value positive" id="time-with">0 hrs</div>
+        <div class="metric-sub">ARIO handles monitoring & alerts</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Group RFP decision time</div>
+        <div class="metric-value positive">Under 3 min</div>
+        <div class="metric-sub">Displacement model calculates instantly</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">OTA commission saving</div>
+        <div class="metric-value positive" id="ota-saving">£0</div>
+        <div class="metric-sub">From 5% direct booking shift</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Rate decisions per week</div>
+        <div class="metric-value positive">15–25</div>
+        <div class="metric-sub">Data-driven, explained, logged</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-label">Institutional memory</div>
+        <div class="metric-value positive" style="font-size:16px;padding-top:4px">Decision Journal</div>
+        <div class="metric-sub">Every decision logged, searchable forever</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT CARDS -->
+  <div class="section-label">Estimated Annual Impact</div>
+  <div class="impact-grid">
+    <div class="impact-card primary">
+      <div class="impact-label">Revenue uplift</div>
+      <div class="impact-value" id="impact-rev">£0</div>
+      <div class="impact-sub">From improved rate decisions</div>
+    </div>
+    <div class="impact-card success">
+      <div class="impact-label">OTA commission saved</div>
+      <div class="impact-value" id="impact-ota">£0</div>
+      <div class="impact-sub">From 5% direct shift</div>
+    </div>
+    <div class="impact-card gold-card">
+      <div class="impact-label">Time saved per year</div>
+      <div class="impact-value" id="impact-time">0 days</div>
+      <div class="impact-sub">Revenue manager hours reclaimed</div>
+    </div>
+    <div class="impact-card neutral">
+      <div class="impact-label">ARIO annual cost</div>
+      <div class="impact-value" style="color:var(--navy2)" id="impact-cost">£3,588</div>
+      <div class="impact-sub">At £950/month starter plan</div>
+    </div>
+  </div>
+
+  <!-- TIME BREAKDOWN -->
+  <div class="time-section">
+    <div class="section-label" style="margin-bottom:8px">Daily Time Comparison — Revenue Manager Workflow</div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#cbd5e1"></div> Without ARIO</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> With ARIO</div>
+    </div>
+    <div class="time-bars">
+      <div class="time-row">
+        <div class="time-task">Morning rate check</div>
+        <div class="bar-wrap">
+          <div class="bar-without" style="width:50-60%"></div>
+          <div class="bar-with" style="width:10%"></div>
+        </div>
+        <div class="time-val">45m → 5m</div>
+      </div>
+      <div class="time-row">
+        <div class="time-task">Competitor shopping</div>
+        <div class="bar-wrap">
+          <div class="bar-without" style="width:60%"></div>
+          <div class="bar-with" style="width:5%"></div>
+        </div>
+        <div class="time-val">30m → 2m</div>
+      </div>
+      <div class="time-row">
+        <div class="time-task">Group RFP pricing</div>
+        <div class="bar-wrap">
+          <div class="bar-without" style="width:100%"></div>
+          <div class="bar-with" style="width:8%"></div>
+        </div>
+        <div class="time-val">90m → 3m</div>
+      </div>
+      <div class="time-row">
+        <div class="time-task">OTA rate updates</div>
+        <div class="bar-wrap">
+          <div class="bar-without" style="width:50%"></div>
+          <div class="bar-with" style="width:5%"></div>
+        </div>
+        <div class="time-val">25m → 0m*</div>
+      </div>
+      <div class="time-row">
+        <div class="time-task">Forecast & reporting</div>
+        <div class="bar-wrap">
+          <div class="bar-without" style="width:80%"></div>
+          <div class="bar-with" style="width:12%"></div>
+        </div>
+        <div class="time-val">60m → 5m</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--textdim);margin-top:10px;font-style:italic">* OTA updates automated on Opera connection</div>
+  </div>
+
+  <!-- ROI SUMMARY -->
+  <div class="roi-summary">
+    <div class="roi-item">
+      <div class="roi-label">Total annual return</div>
+      <div class="roi-value" id="roi-total">£0</div>
+      <div class="roi-sub">Revenue uplift + commission saving</div>
+    </div>
+    <div class="roi-item">
+      <div class="roi-label">Return on investment</div>
+      <div class="roi-value" id="roi-ratio">0x</div>
+      <div class="roi-sub">For every £1 spent on ARIO</div>
+    </div>
+    <div class="roi-item">
+      <div class="roi-label">Payback period</div>
+      <div class="roi-value" id="roi-payback">0 days</div>
+      <div class="roi-sub">Time to recover annual ARIO cost</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Estimates based on industry benchmarks: 8% RevPAR uplift from RMS adoption (STR/HotStats 2024), 5% direct booking shift, 16.5% avg OTA commission.
+    Actual results vary by property. ARIO pilot available free for 60 days.
+  </div>
+
+</div>
+
+<script>
+function fmt(n) {
+  return '£' + Math.round(n).toLocaleString('en-GB');
+}
+
+function calc() {
+  const rooms = parseInt(document.getElementById('rooms').value) || 120;
+  const adr = parseFloat(document.getElementById('adr').value) || 180;
+  const occ = parseInt(document.getElementById('occ').value) || 78;
+  const hours = parseInt(document.getElementById('hours').value) || 4;
+  const rfps = parseInt(document.getElementById('rfps').value) || 8;
+  const otaPct = parseInt(document.getElementById('ota').value) || 55;
+
+  document.getElementById('occ-val').textContent = occ + '%';
+  document.getElementById('hours-val').textContent = hours + 'hrs';
+  document.getElementById('ota-val').textContent = otaPct + '%';
+
+  // Without ARIO
+  const revpar = adr * (occ / 100);
+  const annualRev = revpar * rooms * 365;
+  const otaCost = annualRev * (otaPct / 100) * 0.165;
+  const timePerWeek = hours * 5; // working days
+
+  document.getElementById('rev-without').textContent = fmt(annualRev);
+  document.getElementById('revpar-without').textContent = fmt(revpar);
+  document.getElementById('time-without').textContent = timePerWeek + ' hrs/wk';
+  document.getElementById('ota-cost-without').textContent = fmt(otaCost);
+
+  // With ARIO — conservative 8% RevPAR improvement
+  const upliftFactor = 1.08;
+  const newRevpar = revpar * upliftFactor;
+  const newAnnualRev = newRevpar * rooms * 365;
+  const directShift = 0.05; // 5% shift from OTA to direct
+  const otaSaving = annualRev * directShift * 0.165;
+  const newTimePerWeek = Math.round(timePerWeek * 0.4); // 75% reduction
+
+  document.getElementById('rev-with').textContent = fmt(newAnnualRev);
+  document.getElementById('revpar-with').textContent = fmt(newRevpar);
+  document.getElementById('time-with').textContent = newTimePerWeek + ' hrs/wk';
+  document.getElementById('ota-saving').textContent = fmt(otaSaving);
+
+  // Impact
+  const revUplift = newAnnualRev - annualRev;
+  const totalReturn = revUplift + otaSaving;
+  const arioCost = 950 * 12;
+  const roi = totalReturn / arioCost;
+  const timeSavedHrsYear = (timePerWeek - newTimePerWeek) * 52;
+  const timeSavedDays = Math.round(timeSavedHrsYear / 8);
+  const paybackDays = Math.round(arioCost / (totalReturn / 365));
+
+  document.getElementById('impact-rev').textContent = fmt(revUplift);
+  document.getElementById('impact-ota').textContent = fmt(otaSaving);
+  document.getElementById('impact-time').textContent = timeSavedDays + ' days';
+  document.getElementById('impact-cost').textContent = fmt(arioCost);
+
+  document.getElementById('roi-total').textContent = fmt(totalReturn);
+  document.getElementById('roi-ratio').textContent = Math.round(roi) + 'x';
+  document.getElementById('roi-payback').textContent = paybackDays + ' days';
+}
+
+calc();
+</script>
+</body>
+</html>
