@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"> 
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARIO — Revenue Operating System for Hotels</title>
-<link rel="icon" type="image/png" href="/favicon.png.ico">
-<link rel="apple-touch-icon" href="/favicon.png.ico">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -25,7 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,30,60,0.9
 .nav-brand{display:flex;align-items:center;gap:12px}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--white);letter-spacing:-0.5px;line-height:1}
 .nav-sub{font-size:9px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-left:1px solid rgba(200,168,75,0.4);padding-left:12px;margin-left:4px}
-.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{background:var(--gold);color:var(--navy)!important;font-weight:700!important;padding:10px 22px;border-radius:4px;font-size:13px!important;transition:background 0.2s,transform 0.1s!important}
@@ -57,7 +57,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,30,60,0.9
 
 /* PREVIEW */
 .preview-section{background:var(--navy2);padding:0 80px 80px;position:relative;overflow:hidden}
-.preview-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--cream))}
+.preview-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--navy))}
 .preview-window{background:var(--navy);border:1px solid rgba(200,168,75,0.2);border-radius:12px 12px 0 0;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.5);max-width:1100px;margin:0 auto}
 .preview-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
 .preview-dots{display:flex;gap:6px}
@@ -150,7 +150,7 @@ section{padding:100px 80px}
 .check{color:var(--green);font-size:16px;font-weight:700}
 .cross{color:var(--dim);font-size:16px}
 
-/* PRICING / GET STARTED */
+/* PRICING */
 .pricing{background:var(--cream)}
 .pricing-grid{display:grid;gap:24px;margin-top:60px}
 .price-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:40px 36px;position:relative;transition:transform 0.2s,box-shadow 0.2s}
@@ -228,23 +228,263 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ══════════════════════════════════════
+   INTERACTIVE DEMO SECTION
+══════════════════════════════════════ */
+.demo-section{background:var(--navy);padding:100px 80px;position:relative;overflow:hidden}
+.demo-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+.demo-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.demo-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.demo-h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--white);line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+.demo-h2 em{font-style:italic;color:var(--gold)}
+.demo-p{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.75;max-width:520px;font-weight:300;margin-bottom:0}
+.demo-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;position:relative;z-index:1;flex-wrap:wrap;gap:24px}
+.demo-live-badge{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px}
+.demo-live-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,0.6);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.demo-nav{display:flex;gap:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:4px;position:relative;z-index:1;flex-wrap:wrap;margin-bottom:24px}
+.demo-nav-tab{padding:10px 20px;border-radius:5px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.2s;border:none;background:none;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;display:flex;align-items:center;gap:7px}
+.demo-nav-tab.active{background:var(--gold);color:var(--navy)}
+.demo-nav-tab:hover:not(.active){color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.04)}
+.demo-panels{position:relative;z-index:1}
+.demo-panel{display:none;animation:fadeIn 0.3s ease}
+.demo-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* Overview */
+.overview-wrap{display:flex;flex-direction:column;gap:12px}
+.overview-pace{background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-radius:8px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.op-left h3{font-size:11px;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+.op-left p{font-size:16px;font-weight:700;color:var(--white)}
+.op-left span{font-size:13px;color:rgba(255,255,255,0.5);font-weight:300}
+.op-right{display:flex;gap:16px}
+.op-stat-val{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--white);line-height:1}
+.op-stat-label{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em}
+.overview-strip{background:rgba(30,58,110,0.4);border:1px solid rgba(30,58,110,0.6);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.os-left{font-size:13px;color:rgba(255,255,255,0.7)}
+.os-left strong{color:var(--gold)}
+.os-dates{display:flex;gap:8px;flex-wrap:wrap}
+.os-date{padding:4px 12px;border-radius:4px;font-size:12px;font-weight:700}
+.overview-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.okpi{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid;border-radius:6px;padding:14px 16px;transition:background 0.15s}
+.okpi:hover{background:rgba(255,255,255,0.06)}
+.okpi-label{font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px}
+.okpi-val{font-size:22px;font-weight:700;color:var(--white);font-family:'Cormorant Garamond',serif;line-height:1;margin-bottom:4px}
+.okpi-sub{font-size:10px;color:rgba(255,255,255,0.3)}
+.okpi-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;margin-top:4px;text-transform:uppercase;letter-spacing:0.06em}
+.overview-charts{display:grid;grid-template-columns:3fr 2fr;gap:10px}
+.ochart{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:16px}
+.ochart-label{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+.dow-bars{display:flex;gap:4px;align-items:flex-end;height:44px;margin-bottom:10px}
+.dow-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+/* Alerts */
+.alerts-wrap{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden}
+.alerts-head{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.ah-left{font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em}
+.ah-right{display:flex;gap:8px;align-items:center}
+.ah-count{background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);color:var(--gold);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
+.ah-impact{font-size:11px;color:rgba(255,255,255,0.3)}
+.alert-row{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.15s;cursor:pointer}
+.alert-row:hover{background:rgba(255,255,255,0.02)}
+.alert-row:last-child{border-bottom:none}
+.alert-row.dismissed{opacity:0.3;pointer-events:none}
+.ar-main{display:flex;align-items:center;gap:12px;padding:18px 24px;flex-wrap:wrap}
+.ar-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+.ar-title{font-size:14px;font-weight:600;color:var(--white);flex:1;line-height:1.4;min-width:200px}
+.ar-source{font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:2px 8px;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}
+.ar-impact{font-size:15px;font-weight:700;color:#4ade80;white-space:nowrap}
+.ar-conf{background:rgba(30,58,110,0.4);border:1px solid rgba(30,58,110,0.6);border-radius:3px;padding:2px 8px;font-size:11px;color:rgba(255,255,255,0.35);white-space:nowrap}
+.ar-chevron{font-size:10px;color:rgba(255,255,255,0.25);transition:transform 0.2s;flex-shrink:0}
+.ar-detail{display:none;padding:0 24px 20px;border-top:1px solid rgba(255,255,255,0.05)}
+.ar-detail.open{display:block}
+.ar-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;margin:14px 0 12px}
+.ar-why-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.ar-causes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.ar-cause{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:7px 12px;font-size:12px;color:rgba(255,255,255,0.6)}
+.ar-action-box{background:rgba(30,58,110,0.35);border:1px solid rgba(30,58,110,0.6);border-radius:4px;padding:12px 16px;margin-bottom:14px}
+.ar-action-label{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px}
+.ar-action-text{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6}
+.ar-btns{display:flex;gap:8px}
+.ar-btn-apply{background:var(--gold);color:var(--navy);border:none;border-radius:4px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.15s}
+.ar-btn-apply:hover{background:var(--gold2)}
+.ar-btn-apply.done{background:var(--green);color:#fff;pointer-events:none}
+.ar-btn-dismiss{background:transparent;color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:9px 16px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.ar-btn-dismiss:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.6)}
+/* Rates */
+.rates-wrap{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden}
+.rates-head{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rh-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em}
+.rh-right{display:flex;align-items:center;gap:10px}
+.rh-roomtabs{display:flex;gap:2px}
+.rh-tab{padding:5px 12px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);cursor:pointer;border-radius:3px;transition:all 0.15s;border:none;background:none;font-family:'DM Sans',sans-serif}
+.rh-tab.active{background:rgba(200,168,75,0.15);color:var(--gold);border:1px solid rgba(200,168,75,0.3)}
+.rh-publish{background:var(--gold);color:var(--navy);border:none;border-radius:4px;padding:7px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.rh-publish:hover{background:var(--gold2)}
+.rh-publish.done{background:var(--green);color:#fff}
+.rates-table{width:100%;border-collapse:collapse;font-size:13px}
+.rates-table th{padding:10px 16px;text-align:left;font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05)}
+.rates-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
+.rates-table tr:last-child td{border-bottom:none}
+.rates-table tr:hover td{background:rgba(255,255,255,0.02)}
+.rt-date-cell{font-weight:600;color:var(--white)}
+.rt-weekend-row{background:rgba(200,168,75,0.03)}
+.rt-weekend-row .rt-date-cell{color:var(--gold)}
+.rt-inv{font-size:12px;color:rgba(255,255,255,0.4)}
+.rt-current{color:rgba(255,255,255,0.55)}
+.rt-rec-up{font-weight:700;color:#4ade80}
+.rt-rec-up::before{content:'↑ ';font-size:11px}
+.rt-rec-down{font-weight:700;color:#f87171}
+.rt-rec-down::before{content:'↓ ';font-size:11px}
+.rt-rec-hold{color:rgba(255,255,255,0.4)}
+.rt-occ-cell{display:flex;align-items:center;gap:8px}
+.rt-occ-bar{width:56px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;flex-shrink:0}
+.rt-occ-fill{height:100%;border-radius:2px}
+.rt-occ-pct{font-size:12px;color:rgba(255,255,255,0.5)}
+.rt-status-pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}
+.rt-apply-btn{background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);color:var(--gold);font-size:11px;font-weight:700;padding:5px 12px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.rt-apply-btn:hover{background:rgba(200,168,75,0.2)}
+.rt-apply-btn.done{background:rgba(22,163,74,0.15);border-color:rgba(22,163,74,0.3);color:#4ade80;pointer-events:none}
+.rt-apply-btn.hold{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(255,255,255,0.25);pointer-events:none}
+.rates-footer{padding:10px 16px;background:rgba(30,58,110,0.2);border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.3)}
+/* RFP */
+.rfp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rfp-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:24px}
+.rfp-card-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.rfp-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.rfp-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:10px 14px;font-size:13px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;margin-bottom:14px}
+.rfp-input:focus{border-color:var(--gold)}
+.rfp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rfp-type-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.rfp-type-btn{padding:6px 14px;border-radius:3px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.35);background:none;font-family:'DM Sans',sans-serif;transition:all 0.15s;text-transform:capitalize}
+.rfp-type-btn.active{background:rgba(200,168,75,0.15);border-color:rgba(200,168,75,0.35);color:var(--gold)}
+.rfp-calc-btn{width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:4px;padding:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;margin-top:4px}
+.rfp-calc-btn:hover{background:var(--gold2)}
+.rfp-calc-btn.loading{background:rgba(200,168,75,0.5);pointer-events:none}
+.rfp-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rfp-metric{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:14px}
+.rfp-metric-label{font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.rfp-metric-val{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;line-height:1;margin-bottom:2px}
+.rfp-metric-sub{font-size:10px;color:rgba(255,255,255,0.3)}
+.rfp-rec-box{background:rgba(30,58,110,0.4);border:1px solid rgba(30,58,110,0.6);border-radius:6px;padding:14px}
+.rfp-rec-label{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.rfp-rec-text{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6}
+.rfp-scenarios{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:14px;margin-top:10px}
+.rfp-sc-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+.rfp-sc-row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:4px;margin-bottom:4px;font-size:12px}
+.rfp-sc-row.optimal{background:rgba(200,168,75,0.08);border:1px solid rgba(200,168,75,0.2)}
+/* Competitor */
+.comp-wrap{display:flex;flex-direction:column;gap:12px}
+.comp-staleness{background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.2);border-radius:6px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.comp-staleness-left{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5)}
+.comp-staleness-dot{width:7px;height:7px;border-radius:50%;background:#fbbf24;flex-shrink:0}
+.comp-strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.comp-strategy-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:18px;position:relative;overflow:hidden;transition:all 0.2s;cursor:pointer}
+.comp-strategy-card:hover{background:rgba(255,255,255,0.05)}
+.csc-stripe{position:absolute;top:0;left:0;width:100%;height:3px}
+.csc-name{font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px}
+.csc-strategy{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;padding:2px 8px;border-radius:3px;display:inline-block}
+.csc-rate{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--white);line-height:1;margin-bottom:4px}
+.csc-trend{font-size:11px;margin-bottom:10px}
+.csc-signals{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.csc-signal{font-size:11px;color:rgba(255,255,255,0.4);display:flex;align-items:flex-start;gap:5px}
+.csc-signal::before{content:'·';color:rgba(255,255,255,0.2);flex-shrink:0}
+.csc-rec{background:rgba(0,0,0,0.2);border-radius:4px;padding:8px 10px;font-size:11px;color:rgba(255,255,255,0.6);line-height:1.5;border-left:2px solid}
+.csc-conf{font-size:10px;color:rgba(255,255,255,0.25);margin-top:8px}
+.comp-rate-chart{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:20px}
+.crc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.crc-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em}
+.crc-legend{display:flex;gap:16px;flex-wrap:wrap}
+.crc-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.4)}
+.crc-leg-dot{width:10px;height:3px;border-radius:2px}
+/* Journal */
+.journal-wrap{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden}
+.journal-head{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.jh-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em}
+.jh-stats{display:flex;gap:20px}
+.jh-stat-val{font-size:18px;font-weight:700;font-family:'Cormorant Garamond',serif;line-height:1}
+.jh-stat-label{font-size:10px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.06em}
+.journal-table{width:100%;border-collapse:collapse;font-size:13px}
+.journal-table th{padding:9px 16px;text-align:left;font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05)}
+.journal-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
+.journal-table tr:last-child td{border-bottom:none}
+.journal-table tr:hover td{background:rgba(255,255,255,0.02)}
+.jt-time{font-size:11px;color:rgba(255,255,255,0.3);white-space:nowrap}
+.jt-decision{color:var(--white);font-weight:500}
+.jt-type-applied{background:rgba(22,163,74,0.12);border:1px solid rgba(22,163,74,0.25);color:#4ade80;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;white-space:nowrap}
+.jt-type-dismissed{background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.2);color:#f87171;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;white-space:nowrap}
+.jt-impact-pos{color:#4ade80;font-weight:600}
+.jt-impact-none{color:rgba(255,255,255,0.25)}
+.jt-note{font-size:12px;color:rgba(255,255,255,0.4);font-style:italic}
+.jt-outcome-pending{background:rgba(217,119,6,0.1);border:1px solid rgba(217,119,6,0.2);color:#fbbf24;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase}
+.jt-outcome-confirmed{background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);color:#4ade80;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase}
+.journal-footer{padding:12px 16px;background:rgba(30,58,110,0.2);border-top:1px solid rgba(255,255,255,0.04);font-size:11px;color:rgba(255,255,255,0.3);display:flex;justify-content:space-between;align-items:center}
+.jf-export{background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);color:var(--gold);font-size:11px;font-weight:700;padding:5px 14px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.jf-export:hover{background:rgba(200,168,75,0.2)}
+/* Demo CTA bar */
+.demo-cta-bar{margin-top:24px;background:rgba(30,58,110,0.3);border:1px solid rgba(30,58,110,0.5);border-radius:8px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
+.dcb-left{font-size:13px;color:rgba(255,255,255,0.6)}
+.dcb-left strong{color:var(--white)}
+.dcb-right{display:flex;gap:10px;align-items:center}
+.dcb-link{background:var(--gold);color:var(--navy);font-size:13px;font-weight:700;padding:10px 22px;border-radius:4px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.dcb-link:hover{background:var(--gold2);transform:translateY(-1px)}
+.dcb-link2{color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;transition:color 0.2s}
+.dcb-link2:hover{color:var(--white)}
+
+/* ══════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════ */
+.about{background:var(--cream);padding:100px 80px}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--navy);line-height:1.05;letter-spacing:-1.5px;margin-bottom:24px}
+.about-h2 em{font-style:italic;color:var(--gold)}
+.about-p{font-size:15px;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:16px}
+.about-signature{margin-top:36px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;gap:20px}
+.about-sig-avatar{width:56px;height:56px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);flex-shrink:0;border:2px solid rgba(200,168,75,0.3)}
+.about-sig-name{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.about-sig-role{font-size:12px;color:var(--dim)}
+.about-right{display:flex;flex-direction:column;gap:20px;padding-top:8px}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:28px;position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.about-card.gold::before{background:var(--gold)}
+.about-card.navy::before{background:var(--navy)}
+.about-card.green::before{background:var(--green)}
+.about-card-icon{font-size:22px;margin-bottom:12px}
+.about-card-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.about-card-body{font-size:13px;color:var(--mid);line-height:1.7;font-weight:300}
+.about-card-stat{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--navy);margin-top:12px;line-height:1}
+.about-card-stat span{font-size:14px;color:var(--dim);font-family:'DM Sans',sans-serif;font-weight:400}
+/* Advisory */
+.advisory{background:var(--navy2);padding:60px 80px;border-top:1px solid rgba(200,168,75,0.1)}
+.advisory-inner{display:flex;align-items:center;gap:60px;flex-wrap:wrap}
+.advisory-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);white-space:nowrap;flex-shrink:0}
+.advisory-divider{width:1px;height:40px;background:rgba(255,255,255,0.08);flex-shrink:0}
+.advisory-items{display:flex;gap:48px;flex-wrap:wrap}
+.advisory-item{display:flex;flex-direction:column;gap:3px}
+.advisory-name{font-size:13px;font-weight:600;color:var(--white)}
+.advisory-role{font-size:11px;color:rgba(255,255,255,0.35)}
+
 /* RESPONSIVE */
 @media(max-width:1100px){
   .preview-kpis{grid-template-columns:repeat(2,1fr)}.preview-charts{grid-template-columns:1fr}
   .features-grid{grid-template-columns:1fr 1fr}.how-steps{grid-template-columns:1fr 1fr}
-  .problem-grid,.features-intro,.quant-inner{grid-template-columns:1fr}
+  .problem-grid,.features-intro,.quant-inner,.about-inner{grid-template-columns:1fr}
   .pricing-grid{grid-template-columns:1fr!important}
+  .overview-kpis{grid-template-columns:repeat(2,1fr)}
+  .comp-strategy-grid,.rfp-wrap{grid-template-columns:1fr}
+  .overview-charts{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   nav{padding:0 20px}.nav-links{gap:16px}.nav-links a:not(.nav-cta){display:none}
-  section,.hero,.preview-section,.quant,footer,.pilot{padding-left:20px;padding-right:20px}
-  .hero-h1{font-size:52px}.section-h2,.pilot .section-h2{font-size:40px}
+  section,.hero,.preview-section,.quant,footer,.pilot,.demo-section,.about,.advisory{padding-left:20px;padding-right:20px}
+  .hero-h1{font-size:52px}.section-h2,.pilot .section-h2,.demo-h2,.about-h2{font-size:38px}
   .hero-proof{flex-direction:column;align-items:flex-start;gap:18px}.proof-divider{display:none}
   .features-grid,.how-steps{grid-template-columns:1fr}
   .footer-top,.footer-bottom{flex-direction:column;gap:24px;align-items:flex-start}
   .footer-links{flex-direction:column;gap:24px}
   .pilot-input{width:100%}.pilot-form{flex-direction:column;align-items:center}
   .modal{padding:28px 20px}.modal-row{grid-template-columns:1fr}
+  .demo-nav{gap:2px}.demo-nav-tab{padding:8px 10px;font-size:11px}
+  .rates-table th:nth-child(n+5),.rates-table td:nth-child(n+5){display:none}
+  .advisory-inner{flex-direction:column;gap:20px}.advisory-divider{display:none}
 }
 </style>
 </head>
@@ -254,16 +494,13 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
 <div class="modal-overlay" id="enterpriseModal" onclick="closeModalOverlay(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
-
     <form id="enterpriseForm">
       <div id="modalForm">
         <div class="modal-eyebrow">Multi-property &amp; Enterprise</div>
         <div class="modal-h">Let's talk about<br>your portfolio</div>
         <p class="modal-sub">Tell us about your hotels and what you're looking for. We respond within one business day.</p>
-
         <input type="hidden" name="form_type" value="enterprise enquiry">
         <input type="hidden" name="_subject" value="New ARIO enterprise enquiry">
-
         <div class="modal-row">
           <div class="modal-field">
             <label class="modal-label">Your name *</label>
@@ -284,7 +521,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
         </div>
         <div class="modal-field">
           <label class="modal-label">Tell us what you need</label>
-          <textarea class="modal-textarea" id="ent-note" name="notes" placeholder="What challenges are you facing? What does your current revenue management setup look like? Any specific integrations or requirements?"></textarea>
+          <textarea class="modal-textarea" id="ent-note" name="notes" placeholder="What challenges are you facing? What does your current revenue management setup look like?"></textarea>
         </div>
         <button type="submit" class="modal-submit" id="enterpriseSubmitBtn">
           Send message
@@ -293,7 +530,6 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
         <p class="modal-note">We respond within one business day.</p>
       </div>
     </form>
-
     <div class="modal-success" id="modalSuccess">
       <div class="modal-success-icon">✦</div>
       <div class="modal-success-h">Message received</div>
@@ -303,13 +539,16 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
 </div>
 
 <!-- ═══ NAV ═══ -->
-<div class="nav-brand">
+<nav>
+  <div class="nav-brand">
     <div class="nav-logo">ARIO</div>
     <div class="nav-sub">Operating System</div>
-</div>
+  </div>
   <div class="nav-links">
     <a href="#features">Features</a>
+    <a href="#demo">Demo</a>
     <a href="#how">How it works</a>
+    <a href="#about">About</a>
     <a href="#pricing">Get started</a>
     <a href="#pilot" class="nav-cta">Request Pilot →</a>
   </div>
@@ -326,7 +565,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
     <p class="hero-p fade-up delay-2">ARIO replaces the spreadsheets, the guesswork, and the 4-hour morning routine. It tells you exactly what to do with your pricing — and why — before your competitors make their move.</p>
     <div class="hero-actions fade-up delay-3">
       <a href="#pilot" class="btn-primary">Request a 60-day pilot <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#features" class="btn-ghost">See how it works <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#demo" class="btn-ghost">See live demo <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
   <div class="hero-proof fade-up delay-4">
@@ -380,13 +619,272 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
             <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#16a34a" stop-opacity="0.3"/><stop offset="100%" stop-color="#16a34a" stop-opacity="0"/></linearGradient></defs>
             <path d="M0,30 L19,28 L37,22 L56,18 L74,25 L93,20 L111,15 L130,18 L148,12 L167,8 L185,14 L204,10 L222,6 L241,10 L260,8 L260,90 L0,90 Z" fill="url(#g2)"/>
             <path d="M0,30 L19,28 L37,22 L56,18 L74,25 L93,20 L111,15 L130,18 L148,12 L167,8 L185,14 L204,10 L222,6 L241,10 L260,8" fill="none" stroke="#16a34a" stroke-width="2"/>
-            <path d="M0,30 L260,30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 3"/>
           </svg>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ═══ INTERACTIVE DEMO ═══ -->
+<section class="demo-section" id="demo">
+  <div class="demo-header">
+    <div>
+      <div class="demo-eyebrow">Live product demo</div>
+      <h2 class="demo-h2">See ARIO <em>making decisions</em></h2>
+      <p class="demo-p">Click through the panels below. Everything you see runs on real data from a live London hotel pilot.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+      <div class="demo-live-badge"><div class="demo-live-dot"></div>Hotel Pilot 1 · London · Live data</div>
+      <a onclick="event.preventDefault();document.getElementById('pilot').scrollIntoView({behavior:'smooth'})" style="background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);color:var(--gold);font-size:12px;font-weight:700;padding:10px 20px;border-radius:4px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px">Open full demo →</a>
+    </div>
+  </div>
+  <div class="demo-nav">
+    <button class="demo-nav-tab active" onclick="switchPanel('overview',this)"><span>📊</span> Overview</button>
+    <button class="demo-nav-tab" onclick="switchPanel('alerts',this)"><span>⚡</span> Alerts <span style="background:rgba(200,168,75,0.2);color:var(--gold);font-size:10px;padding:1px 6px;border-radius:10px;margin-left:2px">3</span></button>
+    <button class="demo-nav-tab" onclick="switchPanel('rates',this)"><span>📈</span> Rate Strategy</button>
+    <button class="demo-nav-tab" onclick="switchPanel('rfp',this)"><span>👥</span> Group RFP</button>
+    <button class="demo-nav-tab" onclick="switchPanel('comp',this)"><span>🔍</span> Competitor Intel</button>
+    <button class="demo-nav-tab" onclick="switchPanel('journal',this)"><span>📓</span> Decision Journal</button>
+  </div>
+  <div class="demo-panels">
+
+    <!-- OVERVIEW -->
+    <div class="demo-panel active" id="panel-overview">
+      <div class="overview-wrap">
+        <div class="overview-pace">
+          <div class="op-left"><h3>Today's Revenue Position</h3><p>Revenue is on pace <span>— projected £482,493 this week, ahead of target</span></p></div>
+          <div class="op-right">
+            <div><div class="op-stat-val" style="color:#4ade80">£482,493</div><div class="op-stat-label">Projected Revenue</div></div>
+            <div style="width:1px;height:36px;background:rgba(255,255,255,0.08)"></div>
+            <div><div class="op-stat-val" style="color:#4ade80">On track</div><div class="op-stat-label">Status</div></div>
+          </div>
+        </div>
+        <div class="overview-strip">
+          <div class="os-left">📈 At current pickup <strong>(+4.2 rooms/day)</strong>, week closes at <strong style="color:var(--white)">£482,493</strong> <span style="color:rgba(255,255,255,0.35);font-size:12px">(+18 rooms still to pick up)</span></div>
+          <div class="os-dates">
+            <span class="os-date" style="background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);color:#f87171">89% Fri 19 Apr · 1d out</span>
+            <span class="os-date" style="background:rgba(217,119,6,0.12);border:1px solid rgba(217,119,6,0.25);color:#fbbf24">85% Sat 20 Apr · 2d out</span>
+            <span class="os-date" style="background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.2);color:#4ade80">77% Thu 18 Apr · 3d out</span>
+          </div>
+        </div>
+        <div class="overview-kpis">
+          <div class="okpi" style="border-top-color:#4ade80"><div class="okpi-label">Occupancy Last Night</div><div class="okpi-val">62.7%</div><div class="okpi-sub">Rooms occupied vs available</div></div>
+          <div class="okpi" style="border-top-color:#1e3a6e"><div class="okpi-label">ADR Last Night</div><div class="okpi-val">£160</div><div class="okpi-sub">Average daily rate</div></div>
+          <div class="okpi" style="border-top-color:#1e3a6e"><div class="okpi-label">RevPAR</div><div class="okpi-val">£101</div><div class="okpi-sub">Revenue per available room</div></div>
+          <div class="okpi" style="border-top-color:var(--gold)"><div class="okpi-label">Booking Pace</div><div class="okpi-val">75%</div><div class="okpi-sub">£0 ahead</div><span class="okpi-badge" style="background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)">↑ +14 rooms · 7 days</span></div>
+          <div class="okpi" style="border-top-color:#4ade80"><div class="okpi-label">7-Day Projected</div><div class="okpi-val">£482k</div><div class="okpi-sub">Target: £412,369</div><span class="okpi-badge" style="background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)">▲ 17% vs target</span></div>
+        </div>
+        <div class="overview-charts">
+          <div class="ochart">
+            <div class="ochart-label">14-Day Revenue Forecast — Projected vs Target</div>
+            <svg viewBox="0 0 560 100" height="100" width="100%">
+              <defs><linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a6e" stop-opacity="0.5"/><stop offset="100%" stop-color="#1e3a6e" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,70 L40,65 L80,55 L120,50 L160,58 L200,45 L240,38 L280,30 L320,35 L360,22 L400,18 L440,25 L480,15 L520,10 L560,6 L560,100 L0,100 Z" fill="url(#revGrad)"/>
+              <path d="M0,70 L40,65 L80,55 L120,50 L160,58 L200,45 L240,38 L280,30 L320,35 L360,22 L400,18 L440,25 L480,15 L520,10 L560,6" fill="none" stroke="#1e3a6e" stroke-width="2"/>
+              <path d="M0,72 L560,48" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 3"/>
+            </svg>
+          </div>
+          <div class="ochart">
+            <div class="ochart-label">Occupancy by Day of Week</div>
+            <div class="dow-bars" id="dowBars"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERTS -->
+    <div class="demo-panel" id="panel-alerts">
+      <div class="alerts-wrap">
+        <div class="alerts-head">
+          <div class="ah-left">Active Alerts — Ranked by Revenue Impact</div>
+          <div class="ah-right"><div class="ah-count">3 alerts</div><div class="ah-impact">£21,232 total opportunity</div></div>
+        </div>
+        <div class="alert-row" id="alert1">
+          <div class="ar-main" onclick="toggleAlert('1')">
+            <span class="ar-badge" style="background:rgba(22,163,74,0.12);color:#4ade80;border:1px solid rgba(22,163,74,0.3)">Opportunity</span>
+            <div class="ar-title">Fri 19 Apr at 89% OTB — yield opportunity</div>
+            <span class="ar-source">ARIO Model</span>
+            <div class="ar-impact">£9,192</div>
+            <span class="ar-conf">81% confidence</span>
+            <span class="ar-chevron" id="chev1">▼</span>
+          </div>
+          <div class="ar-detail" id="detail1">
+            <p class="ar-desc">Fri 19 Apr has 383 rooms on the books at an average of £198. With 89% OTB this far out, demand is strong enough to support a rate increase. Pricing power is yours.</p>
+            <div class="ar-why-label">Why this alert was triggered</div>
+            <div class="ar-causes">
+              <div class="ar-cause"><span style="color:#4ade80;font-weight:700;margin-right:4px">▲</span><strong>OTB strength</strong> · 89% on the books · 92%</div>
+              <div class="ar-cause"><span style="color:#4ade80;font-weight:700;margin-right:4px">▲</span><strong>Lead time premium</strong> · High OTB signals strong demand · 84%</div>
+              <div class="ar-cause"><span style="color:#4ade80;font-weight:700;margin-right:4px">▲</span><strong>Rate headroom</strong> · Current ADR £198 — room to yield · 78%</div>
+            </div>
+            <div class="ar-action-box"><div class="ar-action-label">Recommended Action</div><div class="ar-action-text">Raise S1K rate to £222 on Fri 19 Apr — estimated additional revenue £9,192 based on current OTB and typical same-day pickup at this occupancy level.</div></div>
+            <div class="ar-btns">
+              <button class="ar-btn-apply" onclick="event.stopPropagation();applyAlert('alert1',this)">Apply Recommendation</button>
+              <button class="ar-btn-dismiss" onclick="event.stopPropagation();dismissAlert('alert1')">Dismiss</button>
+            </div>
+          </div>
+        </div>
+        <div class="alert-row" id="alert2">
+          <div class="ar-main" onclick="toggleAlert('2')">
+            <span class="ar-badge" style="background:rgba(22,163,74,0.12);color:#4ade80;border:1px solid rgba(22,163,74,0.3)">Opportunity</span>
+            <div class="ar-title">LOS opportunity: Close 1-night stays on Sat 20 Apr</div>
+            <span class="ar-source">LOS Analysis</span>
+            <div class="ar-impact">£7,840</div>
+            <span class="ar-conf">72% confidence</span>
+            <span class="ar-chevron" id="chev2">▼</span>
+          </div>
+          <div class="ar-detail" id="detail2">
+            <p class="ar-desc">Saturday 20 Apr is at 85% OTB with strong Friday and Sunday demand. 1-night Saturday bookings are blocking full Fri–Sat–Sun stays at premium rate.</p>
+            <div class="ar-action-box"><div class="ar-action-label">Recommended Action</div><div class="ar-action-text">Set minimum stay 2 nights on Sat 20 Apr — prevents 1-night arrivals that displace higher-value Fri–Sun bookings.</div></div>
+            <div class="ar-btns">
+              <button class="ar-btn-apply" onclick="event.stopPropagation();applyAlert('alert2',this)">Apply Recommendation</button>
+              <button class="ar-btn-dismiss" onclick="event.stopPropagation();dismissAlert('alert2')">Dismiss</button>
+            </div>
+          </div>
+        </div>
+        <div class="alert-row" id="alert3">
+          <div class="ar-main" onclick="toggleAlert('3')">
+            <span class="ar-badge" style="background:rgba(217,119,6,0.12);color:#fbbf24;border:1px solid rgba(217,119,6,0.3)">At Risk</span>
+            <div class="ar-title">Mid-week pace soft — Mon 15 Apr (48% OTB) needs attention</div>
+            <span class="ar-source">Pace Model</span>
+            <div class="ar-impact">£4,200</div>
+            <span class="ar-conf">79% confidence</span>
+            <span class="ar-chevron" id="chev3">▼</span>
+          </div>
+          <div class="ar-detail" id="detail3">
+            <p class="ar-desc">£4,200 at risk over the next 7 days. Softest dates: Mon 15 Apr (48% OTB), Tue 16 Apr (51% OTB). Mid-week pickup velocity has slowed.</p>
+            <div class="ar-action-box"><div class="ar-action-label">Recommended Action</div><div class="ar-action-text">Consider a 3-night minimum stay offer or corporate rate promotion targeting Tuesday check-in on Mon 15 and Tue 16 Apr specifically.</div></div>
+            <div class="ar-btns">
+              <button class="ar-btn-apply" onclick="event.stopPropagation();applyAlert('alert3',this)">Apply Recommendation</button>
+              <button class="ar-btn-dismiss" onclick="event.stopPropagation();dismissAlert('alert3')">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RATE STRATEGY -->
+    <div class="demo-panel" id="panel-rates">
+      <div class="rates-wrap">
+        <div class="rates-head">
+          <div class="rh-title">Rate Strategy — Next 7 Days · S1K Room Type</div>
+          <div class="rh-right">
+            <div class="rh-roomtabs">
+              <button class="rh-tab active" onclick="switchRoomType(this)">S1K</button>
+              <button class="rh-tab" onclick="switchRoomType(this)">S2Q</button>
+              <button class="rh-tab" onclick="switchRoomType(this)">E1K</button>
+            </div>
+            <button class="rh-publish" id="publishBtn" onclick="publishRates()">Publish to Opera</button>
+          </div>
+        </div>
+        <table class="rates-table"><thead><tr><th>Stay Date</th><th>Remaining / Total</th><th>Current Rate</th><th>ARIO Recommends</th><th>Occupancy OTB</th><th>Status</th><th>Action</th></tr></thead><tbody id="ratesTableBody"></tbody></table>
+        <div class="rates-footer"><span>Recommendations respect your floor (£170) and ceiling (£320) constraints · Last updated 08:14 today</span><span>Next retrain: 02:00 tomorrow</span></div>
+      </div>
+    </div>
+
+    <!-- GROUP RFP -->
+    <div class="demo-panel" id="panel-rfp">
+      <div class="rfp-wrap">
+        <div class="rfp-card">
+          <div class="rfp-card-title">Enter Group Enquiry</div>
+          <div class="rfp-label">Client / Group Name</div>
+          <input class="rfp-input" id="rfp-client" value="Deloitte UK — Annual Conference">
+          <div class="rfp-row">
+            <div><div class="rfp-label">Rooms Required</div><input class="rfp-input" id="rfp-rooms" type="number" value="45" min="1" max="432"></div>
+            <div><div class="rfp-label">Nights</div><input class="rfp-input" id="rfp-nights" type="number" value="3" min="1" max="30"></div>
+          </div>
+          <div class="rfp-row">
+            <div><div class="rfp-label">Check-in</div><input class="rfp-input" type="date" id="rfp-checkin" value="2026-05-12"></div>
+            <div><div class="rfp-label">Check-out</div><input class="rfp-input" type="date" id="rfp-checkout" value="2026-05-15"></div>
+          </div>
+          <div class="rfp-label">Event Type</div>
+          <div class="rfp-type-btns">
+            <button class="rfp-type-btn active" onclick="setRfpType(this)">Corporate</button>
+            <button class="rfp-type-btn" onclick="setRfpType(this)">Conference</button>
+            <button class="rfp-type-btn" onclick="setRfpType(this)">Wedding</button>
+            <button class="rfp-type-btn" onclick="setRfpType(this)">Leisure</button>
+            <button class="rfp-type-btn" onclick="setRfpType(this)">Sports</button>
+          </div>
+          <div class="rfp-label">Estimated F&amp;B Spend (£)</div>
+          <input class="rfp-input" id="rfp-fb" type="number" value="18000" min="0">
+          <button class="rfp-calc-btn" id="rfpCalcBtn" onclick="calcRFP()">Calculate Pricing Strategy →</button>
+          <p style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:8px">Under 3 minutes · No spreadsheet required</p>
+        </div>
+        <div class="rfp-card" id="rfpResults">
+          <div class="rfp-card-title">ARIO Pricing Strategy</div>
+          <div class="rfp-metric-grid" id="rfpMetrics"></div>
+          <div class="rfp-rec-box" id="rfpRec" style="margin-top:10px"></div>
+          <div id="rfpScenarios"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPETITOR INTEL -->
+    <div class="demo-panel" id="panel-comp">
+      <div class="comp-wrap">
+        <div class="comp-staleness">
+          <div class="comp-staleness-left"><div class="comp-staleness-dot"></div>Competitor rates entered 2h ago — Market Intelligence current</div>
+          <span style="font-size:11px;color:rgba(255,255,255,0.25)">OTA Insight integration available on pilot</span>
+        </div>
+        <div class="comp-strategy-grid" id="compCards"></div>
+        <div class="comp-rate-chart">
+          <div class="crc-head">
+            <div class="crc-title">Rate Comparison — Last 14 Days</div>
+            <div class="crc-legend">
+              <div class="crc-leg-item"><div class="crc-leg-dot" style="background:var(--gold)"></div>Your rate</div>
+              <div class="crc-leg-item"><div class="crc-leg-dot" style="background:#6366f1"></div>The Grand</div>
+              <div class="crc-leg-item"><div class="crc-leg-dot" style="background:#0891b2"></div>City Hotel</div>
+              <div class="crc-leg-item"><div class="crc-leg-dot" style="background:#7c3aed"></div>Boutique</div>
+            </div>
+          </div>
+          <svg viewBox="0 0 700 120" width="100%" height="120">
+            <path d="M0,60 L50,58 L100,62 L150,59 L200,61 L250,58 L300,60 L350,57 L400,62 L450,59 L500,61 L550,58 L600,60 L650,57 L700,59" fill="none" stroke="var(--gold)" stroke-width="2.5"/>
+            <path d="M0,75 L50,72 L100,70 L150,65 L200,60 L250,55 L300,50 L350,48 L400,45 L450,43 L500,40 L550,38 L600,35 L650,32 L700,30" fill="none" stroke="#6366f1" stroke-width="2"/>
+            <path d="M0,55 L50,57 L100,60 L150,65 L200,68 L250,72 L300,75 L350,78 L400,80 L450,82 L500,85 L550,83 L600,80 L650,82 L700,85" fill="none" stroke="#0891b2" stroke-width="2"/>
+            <path d="M0,45 L50,50 L100,42 L150,55 L200,48 L250,40 L300,52 L350,44 L400,50 L450,42 L500,38 L550,45 L600,40 L650,35 L700,42" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="0" y1="60" x2="700" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="0" y1="90" x2="700" y2="90" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <text x="2" y="28" fill="rgba(255,255,255,0.2)" font-size="9" font-family="DM Sans">£250</text>
+            <text x="2" y="58" fill="rgba(255,255,255,0.2)" font-size="9" font-family="DM Sans">£200</text>
+            <text x="2" y="88" fill="rgba(255,255,255,0.2)" font-size="9" font-family="DM Sans">£150</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECISION JOURNAL -->
+    <div class="demo-panel" id="panel-journal">
+      <div class="journal-wrap">
+        <div class="journal-head">
+          <div class="jh-title">Decision Journal — Full Audit Trail</div>
+          <div class="jh-stats">
+            <div><div class="jh-stat-val" style="color:#4ade80">8</div><div class="jh-stat-label">Applied</div></div>
+            <div><div class="jh-stat-val" style="color:#f87171">3</div><div class="jh-stat-label">Dismissed</div></div>
+            <div><div class="jh-stat-val" style="color:var(--gold)">£42,180</div><div class="jh-stat-label">Expected Impact</div></div>
+          </div>
+        </div>
+        <table class="journal-table">
+          <thead><tr><th>Time</th><th>Decision</th><th>Action</th><th>Expected Impact</th><th>Manager Note</th><th>Outcome</th></tr></thead>
+          <tbody id="journalBody"></tbody>
+        </table>
+        <div class="journal-footer">
+          <span>Every decision logged permanently · institutional knowledge never walks out the door</span>
+          <button class="jf-export" onclick="exportJournal()">↓ Export Report</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="demo-cta-bar">
+    <div class="dcb-left"><strong>This is ARIO running on real hotel data.</strong> Your property would look exactly like this — with your own booking pace, your own alerts, your own decisions.</div>
+    <div class="dcb-right">
+      <a href="#pilot" class="dcb-link">Start 60-day pilot →</a>
+      <a onclick="event.preventDefault();document.getElementById('pilot').scrollIntoView({behavior:'smooth'})" style="background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);color:var(--gold);font-size:12px;font-weight:700;padding:10px 20px;border-radius:4px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px">Explore more→</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ PROBLEM ═══ -->
 <section class="problem" id="problem">
@@ -397,7 +895,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
       <p class="section-p" style="margin-top:16px">Meanwhile, the market moves. Competitors reprice. Demand signals shift. And the window to act closes before you've finished your morning data pull.</p>
     </div>
     <div class="problem-cards reveal">
-      <div class="problem-card" style="border-left-color:#dc2626"><div class="pc-icon">⏱</div><div><div class="pc-title">45 minutes every morning on rate checks</div><div class="pc-body">Manually pulling data from Opera, OTAs, and competitor sites before making a single pricing decision.</div></div></div>
+      <div class="problem-card" style="border-left-color:#dc2626"><div class="pc-icon">⏱</div><div><div class="pc-title">45 minutes every morning on rate checks</div><div class="pc-body">Manually pulling data from hotel PMS, OTAs, and competitor sites before making a single pricing decision.</div></div></div>
       <div class="problem-card" style="border-left-color:#d97706"><div class="pc-icon">📋</div><div><div class="pc-title">Group RFPs take 45–90 minutes each</div><div class="pc-body">Displacement calculations done in spreadsheets, with no real data on what transient demand you'd be giving up.</div></div></div>
       <div class="problem-card" style="border-left-color:#d97706"><div class="pc-icon">📊</div><div><div class="pc-title">Competitor data without context</div><div class="pc-body">You can see their rates — but not whether they're panicking, yielding up, or following a deliberate strategy.</div></div></div>
       <div class="problem-card" style="border-left-color:#7a8aaa"><div class="pc-icon">🧠</div><div><div class="pc-title">Institutional knowledge lives in people's heads</div><div class="pc-body">When a revenue manager leaves, so does every decision, pattern, and insight they built up over their tenure.</div></div></div>
@@ -413,7 +911,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
     <p class="section-p">ARIO connects to your PMS, pulls live data, runs its models, and tells you exactly what to do — before you've finished your morning coffee.</p>
   </div>
   <div class="how-steps">
-    <div class="how-step reveal"><div class="step-num">01</div><div class="step-line"></div><div class="step-title">Connect your PMS</div><div class="step-body">ARIO integrates with Opera and pulls your live booking data, room inventory, and historical performance automatically.</div><div class="step-arrow">→</div></div>
+    <div class="how-step reveal"><div class="step-num">01</div><div class="step-line"></div><div class="step-title">Connect your PMS</div><div class="step-body">ARIO integrates with any PMS and pulls your live booking data, room inventory, and historical performance automatically.</div><div class="step-arrow">→</div></div>
     <div class="how-step reveal"><div class="step-num">02</div><div class="step-line"></div><div class="step-title">Models run overnight</div><div class="step-body">Four quantitative models retrain nightly on your property's own data — demand forecasting, price elasticity, competitor strategy, and Bayesian live updates.</div><div class="step-arrow">→</div></div>
     <div class="how-step reveal"><div class="step-num">03</div><div class="step-line"></div><div class="step-title">Alerts surface at 8am</div><div class="step-body">ARIO shows you what changed overnight, what's causing it (causal chain), and the single most impactful action to take.</div><div class="step-arrow">→</div></div>
     <div class="how-step reveal"><div class="step-num">04</div><div class="step-line"></div><div class="step-title">You apply or override</div><div class="step-body">Every recommendation requires your approval. Apply it in one click, add a note, and ARIO logs it to your Decision Journal permanently.</div></div>
@@ -456,7 +954,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
     <div class="quant-metrics reveal">
       <div class="qm"><div class="qm-val">1,000<span> runs</span></div><div class="qm-label">Monte Carlo scenarios per revenue risk calculation</div></div>
       <div class="qm"><div class="qm-val">4<span> models</span></div><div class="qm-label">Run simultaneously — weighted by data confidence</div></div>
-      <div class="qm"><div class="qm-val">02:00<span> am</span></div><div class="qm-label">Nightly model retrain after Opera night audit</div></div>
+      <div class="qm"><div class="qm-val">02:00<span> am</span></div><div class="qm-label">Nightly model retrain after night audit</div></div>
       <div class="qm"><div class="qm-val">Live<span> updates</span></div><div class="qm-label">Bayesian model updates with every booking received</div></div>
     </div>
   </div>
@@ -480,6 +978,58 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
   </div>
 </section>
 
+<!-- ═══ ABOUT ═══ -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-eyebrow">About ARIO</div>
+      <h2 class="about-h2">Built from the<br>inside <em>out</em></h2>
+      <p class="about-p">ARIO wasn't designed in a product meeting. It was built by someone who spent years working hotel operations — watching revenue decisions get made on gut feel, incomplete data, and not enough time.</p>
+      <p class="about-p">The gap between what the data was saying and what actually got decided was costing hotels real money every single day. Not because the revenue managers were wrong — because the tools weren't built for how decisions actually get made.</p>
+      <p class="about-p">ARIO is the tool hotels wished existed. Every feature exists because a real revenue manager needed it. Every model is transparent because a revenue manager should understand why they're being asked to act.</p>
+      <div class="about-signature">
+        <div class="about-sig-avatar">A</div>
+        <div>
+          <div class="about-sig-name">Ach Charrouf</div>
+          <div class="about-sig-role">Founder &amp; Managing Director, ARIO · Former Hotel Manager, London</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card gold">
+  <div class="about-card-icon">🏨</div>
+  <div class="about-card-title">Built on real operations experience</div>
+  <div class="about-card-body">ARIO was built by someone who worked the floor — not a consultant who visited one. Every alert, every model, every feature was designed around decisions that actually need to be made at 6am before the morning briefing.</div>
+  <div class="about-card-stat">London <span>· full-service hotel operations</span></div>
+</div>
+      <div class="about-card navy">
+        <div class="about-card-icon">🔬</div>
+        <div class="about-card-title">Institutional-grade quantitative models</div>
+        <div class="about-card-body">ARIO applies the same mathematical foundations used in institutional finance — Value at Risk, Monte Carlo simulation, Bayesian inference — to hotel revenue management. Transparent, explainable, and auditable.</div>
+      </div>
+      <div class="about-card green">
+        <div class="about-card-icon">🎯</div>
+        <div class="about-card-title">Decisions, not dashboards</div>
+        <div class="about-card-body">Every metric ARIO surfaces comes with a clear, reasoned action. Not data to interpret — direction to act on. And every decision you make is logged permanently so nothing walks out the door.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ADVISORY STRIP ═══ -->
+<div class="advisory">
+  <div class="advisory-inner">
+    <div class="advisory-label">Built for</div>
+    <div class="advisory-divider"></div>
+    <div class="advisory-items">
+      <div class="advisory-item"><div class="advisory-name">Hotel PMS</div><div class="advisory-role">Native integration · no IT project</div></div>
+      <div class="advisory-item"><div class="advisory-name">Independent Hotels</div><div class="advisory-role">50–500 rooms · London &amp; UK</div></div>
+      <div class="advisory-item"><div class="advisory-name">Hotel Groups</div><div class="advisory-role">Multi-property portfolio view</div></div>
+      <div class="advisory-item"><div class="advisory-name">IHG &amp; Branded Properties</div><div class="advisory-role">Works alongside existing RMS tools</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ GET STARTED ═══ -->
 <section class="pricing" id="pricing">
   <div class="reveal" style="text-align:center">
@@ -488,7 +1038,6 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
     <p class="section-p" style="max-width:420px;margin:12px auto 0">No contracts, no lock-in. Start with a pilot or talk to us about a tailored deployment.</p>
   </div>
   <div class="pricing-grid reveal" style="grid-template-columns:1fr 1fr;max-width:920px;margin:60px auto 0">
-
     <div class="price-card featured" style="padding:48px 44px">
       <div class="price-tier">60-Day Free Pilot</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--white);line-height:1.1;margin-bottom:12px">Try ARIO on your<br>own property's data</div>
@@ -506,7 +1055,6 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
       <a href="#pilot" class="price-btn" style="background:var(--gold);color:var(--navy);padding:16px;font-size:14px;text-decoration:none;display:block;text-align:center;border-radius:4px;font-weight:700">Start my 60-day pilot →</a>
       <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:14px;text-align:center">No credit card · No commitment · Setup in 30 minutes</p>
     </div>
-
     <div class="price-card" style="padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between">
       <div>
         <div class="price-tier">Multi-Property &amp; Enterprise</div>
@@ -527,7 +1075,6 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
         <p style="font-size:11px;color:var(--dim);margin-top:14px;text-align:center">We'll respond within one business day</p>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -536,40 +1083,29 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
   <div class="section-eyebrow">60-day free pilot</div>
   <h2 class="section-h2">See it on your<br>own <em>property's data</em></h2>
   <p class="section-p">We're currently onboarding pilot hotels. No payment, no commitment — just 60 days of ARIO running on your live data, with full support from day one.</p>
-
   <form id="pilotForm">
     <input type="hidden" name="form_type" value="pilot request">
     <input type="hidden" name="_subject" value="New ARIO pilot request">
-
     <div class="pilot-form" id="pilotStep1">
       <input class="pilot-input" id="p-name" name="name" type="text" placeholder="Your name" required>
       <input class="pilot-input" id="p-hotel" name="hotel" type="text" placeholder="Hotel name">
       <input class="pilot-input" id="p-email" name="email" type="email" placeholder="Email address" required>
-      <button type="button" class="btn-primary" onclick="showPilotNote()">
-        Request access
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+      <button type="button" class="btn-primary" onclick="showPilotNote()">Request access <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
-
     <div id="pilotStep2" style="display:none;position:relative;z-index:1;width:100%;max-width:700px;margin:0 auto">
       <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px">One last thing — anything you'd like us to know before we reach out? <span style="opacity:0.5">(optional)</span></p>
       <textarea class="pilot-textarea" id="p-note" name="notes" placeholder="e.g. current PMS, number of rooms, what you're hoping ARIO will help with..."></textarea>
       <div style="display:flex;gap:12px;justify-content:center;margin-top:12px;flex-wrap:wrap">
-        <button type="submit" class="btn-primary" id="pilotSubmitBtn">
-          Send my request →
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button type="submit" class="btn-primary" id="pilotSubmitBtn">Send my request → <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" onclick="submitPilot()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);padding:16px 24px;border-radius:4px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif">Skip →</button>
       </div>
     </div>
   </form>
-
   <div id="pilotSuccess" style="display:none;position:relative;z-index:1">
     <div style="font-size:32px;color:var(--gold);margin-bottom:12px">✦</div>
     <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--white);margin-bottom:10px">Request received</div>
     <p style="font-size:14px;color:rgba(255,255,255,0.5);max-width:420px;margin:0 auto">We'll be in touch within one business day to get your pilot set up. Keep an eye on your inbox.</p>
   </div>
-
   <p class="pilot-note" id="pilotNote">No credit card required · 60 days free · Cancel any time · Setup in under 30 minutes</p>
 </section>
 
@@ -578,22 +1114,25 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
   <div class="footer-top">
     <div>
       <div class="footer-rule"></div>
-<img src="/ario_logo.svg" alt="ARIO" style="height:44px;width:auto;margin-bottom:8px">
-<div class="footer-tagline">Revenue Operating System · Built for Independent Hotels</div>
+      <div class="footer-brand">ARIO</div>
+      <div class="footer-tagline">Revenue Operating System · Built for Independent Hotels</div>
+    </div>
     <div class="footer-links">
       <div class="footer-col">
         <h4>Product</h4>
-        <a href="#features">Features</a><a href="#how">How it works</a>
-        <a href="#pricing">Get started</a><a href="#pilot">Pilot programme</a>
+        <a href="#features">Features</a><a href="#demo">Live Demo</a>
+        <a href="#how">How it works</a><a href="#pricing">Get started</a>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#">Revenue Manager's Guide</a>
-        <a href="/ario_roi_calculator.html">ROI Calculator</a><a href="#">Documentation</a>
+        <h4>Company</h4>
+        <a href="#about">About ARIO</a>
+        <a href="#pilot">Pilot programme</a>
+        <a href="#">ROI Calculator</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="mailto:hello@ariorms.com">hello@ariorms.com</a>
+        <a href="mailto:pilot@ariorms.com">pilot@ariorms.com</a>
       </div>
     </div>
   </div>
@@ -608,122 +1147,251 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjogrpk";
 
 // ── SCROLL REVEAL ──
 const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),80); });
-},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+  entries.forEach(e=>{ if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),80) })
+},{threshold:0.08})
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r))
 document.querySelectorAll('.features-grid .feat-card,.how-steps .how-step,.pricing-grid .price-card,.problem-cards .problem-card').forEach((el,i)=>{
-  el.style.transitionDelay=(i%3)*0.08+'s';
-});
+  el.style.transitionDelay=(i%3)*0.08+'s'
+})
 
 // ── NAV ACTIVE ──
-const navLinks=document.querySelectorAll('.nav-links a:not(.nav-cta)');
+const navLinks=document.querySelectorAll('.nav-links a:not(.nav-cta)')
 window.addEventListener('scroll',()=>{
-  let cur='';
-  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
-  navLinks.forEach(l=>{l.style.color=l.getAttribute('href')==='#'+cur?'#fff':'rgba(255,255,255,0.65)';});
-});
+  let cur=''
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id})
+  navLinks.forEach(l=>{l.style.color=l.getAttribute('href')==='#'+cur?'#fff':'rgba(255,255,255,0.65)'})
+})
 
-// ── ENTERPRISE MODAL ──
-function openEnterpriseModal(){
-  document.getElementById('enterpriseModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){
-  document.getElementById('enterpriseModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-function closeModalOverlay(e){
-  if(e.target===document.getElementById('enterpriseModal')) closeModal();
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+// ── MODAL ──
+function openEnterpriseModal(){document.getElementById('enterpriseModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('enterpriseModal').classList.remove('open');document.body.style.overflow=''}
+function closeModalOverlay(e){if(e.target===document.getElementById('enterpriseModal'))closeModal()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()})
 
 async function postToFormspree(data){
-  const response = await fetch(FORMSPREE_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: data
-  });
-
-  if (!response.ok) {
-    throw new Error('Form submission failed');
-  }
-
-  return response;
+  const r=await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:data})
+  if(!r.ok)throw new Error('Failed')
+  return r
 }
 
-document.getElementById('enterpriseForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-
-  const submitBtn = document.getElementById('enterpriseSubmitBtn');
-  const originalHtml = submitBtn.innerHTML;
-
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Sending...';
-
-  try {
-    const formData = new FormData(this);
-    await postToFormspree(formData);
-    document.getElementById('modalForm').style.display='none';
-    document.getElementById('modalSuccess').style.display='block';
-  } catch (err) {
-    alert('Something went wrong. Please try again.');
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalHtml;
-  }
-});
+document.getElementById('enterpriseForm').addEventListener('submit',async function(e){
+  e.preventDefault()
+  const btn=document.getElementById('enterpriseSubmitBtn')
+  const orig=btn.innerHTML
+  btn.disabled=true;btn.innerHTML='Sending...'
+  try{
+    await postToFormspree(new FormData(this))
+    document.getElementById('modalForm').style.display='none'
+    document.getElementById('modalSuccess').style.display='block'
+  }catch{alert('Something went wrong. Please try again.');btn.disabled=false;btn.innerHTML=orig}
+})
 
 // ── PILOT FORM ──
 function showPilotNote(){
-  const name=document.getElementById('p-name').value.trim();
-  const email=document.getElementById('p-email').value.trim();
-
-  document.getElementById('p-name').style.borderColor = name ? '' : '#dc2626';
-  document.getElementById('p-email').style.borderColor = email ? '' : '#dc2626';
-
-  if(!name || !email) return;
-
-  document.getElementById('pilotStep1').style.display='none';
-  document.getElementById('pilotStep2').style.display='block';
-  document.getElementById('pilotStep2').scrollIntoView({behavior:'smooth',block:'center'});
+  const name=document.getElementById('p-name').value.trim()
+  const email=document.getElementById('p-email').value.trim()
+  document.getElementById('p-name').style.borderColor=name?'':'#dc2626'
+  document.getElementById('p-email').style.borderColor=email?'':'#dc2626'
+  if(!name||!email)return
+  document.getElementById('pilotStep1').style.display='none'
+  document.getElementById('pilotStep2').style.display='block'
+  document.getElementById('pilotStep2').scrollIntoView({behavior:'smooth',block:'center'})
 }
 
-document.getElementById('pilotForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  await submitPilot();
-});
+document.getElementById('pilotForm').addEventListener('submit',async function(e){e.preventDefault();await submitPilot()})
 
 async function submitPilot(){
-  const name=document.getElementById('p-name').value.trim();
-  const email=document.getElementById('p-email').value.trim();
-  const submitBtn=document.getElementById('pilotSubmitBtn');
-
-  if(!name || !email){
-    document.getElementById('p-name').style.borderColor = name ? '' : '#dc2626';
-    document.getElementById('p-email').style.borderColor = email ? '' : '#dc2626';
-    document.getElementById('pilotStep1').style.display='flex';
-    document.getElementById('pilotStep2').style.display='none';
-    return;
+  const name=document.getElementById('p-name').value.trim()
+  const email=document.getElementById('p-email').value.trim()
+  const btn=document.getElementById('pilotSubmitBtn')
+  if(!name||!email){
+    document.getElementById('p-name').style.borderColor=name?'':'#dc2626'
+    document.getElementById('p-email').style.borderColor=email?'':'#dc2626'
+    document.getElementById('pilotStep1').style.display='flex'
+    document.getElementById('pilotStep2').style.display='none'
+    return
   }
+  const orig=btn.innerHTML;btn.disabled=true;btn.innerHTML='Sending...'
+  try{
+    await postToFormspree(new FormData(document.getElementById('pilotForm')))
+    document.getElementById('pilotStep1').style.display='none'
+    document.getElementById('pilotStep2').style.display='none'
+    document.getElementById('pilotNote').style.display='none'
+    document.getElementById('pilotSuccess').style.display='block'
+  }catch{alert('Something went wrong. Please try again.');btn.disabled=false;btn.innerHTML=orig}
+}
 
-  const originalHtml = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Sending...';
+// ── DEMO PANEL SWITCHING ──
+function switchPanel(id,btn){
+  document.querySelectorAll('.demo-nav-tab').forEach(t=>t.classList.remove('active'))
+  document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'))
+  btn.classList.add('active')
+  document.getElementById('panel-'+id).classList.add('active')
+}
 
-  try {
-    const formData = new FormData(document.getElementById('pilotForm'));
-    await postToFormspree(formData);
+// ── DOW BARS ──
+const dowData=[
+  {label:'Mon',pct:70},{label:'Tue',pct:72},{label:'Wed',pct:66},
+  {label:'Thu',pct:77,today:true},{label:'Fri',pct:89},{label:'Sat',pct:85},{label:'Sun',pct:62}
+]
+const maxPct=Math.max(...dowData.map(d=>d.pct))
+const dowWrap=document.getElementById('dowBars')
+if(dowWrap){
+  dowData.forEach(d=>{
+    const barH=Math.max(4,Math.round((d.pct/maxPct)*28))
+    const color=d.today?'var(--navy3)':d.pct>=85?'#f87171':d.pct>=70?'#fbbf24':'#4ade80'
+    const labelColor=d.today?'var(--gold)':'rgba(255,255,255,0.3)'
+    const labelWeight=d.today?700:400
+    dowWrap.innerHTML+=`<div class="dow-bar-wrap">
+      <div style="font-size:8px;color:${labelColor};font-weight:${labelWeight}">${d.pct}%</div>
+      <div style="height:${barH}px;background:${color};width:100%;border-radius:2px;flex:1"></div>
+      <div style="font-size:8px;color:${labelColor};font-weight:${labelWeight}">${d.label}</div>
+    </div>`
+  })
+}
 
-    document.getElementById('pilotStep1').style.display='none';
-    document.getElementById('pilotStep2').style.display='none';
-    document.getElementById('pilotNote').style.display='none';
-    document.getElementById('pilotSuccess').style.display='block';
-  } catch (err) {
-    alert('Something went wrong. Please try again.');
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalHtml;
-  }
+// ── ALERT TOGGLING ──
+function toggleAlert(n){
+  const detail=document.getElementById('detail'+n)
+  const chev=document.getElementById('chev'+n)
+  const isOpen=detail.classList.contains('open')
+  document.querySelectorAll('.ar-detail').forEach(d=>d.classList.remove('open'))
+  document.querySelectorAll('.ar-chevron').forEach(c=>c.textContent='▼')
+  if(!isOpen){detail.classList.add('open');chev.textContent='▲'}
+}
+
+function applyAlert(id,btn){
+  btn.textContent='✓ Applied & Logged'
+  btn.classList.add('done')
+  const label=id==='alert1'?'Rate raised to £222 on Fri 19 Apr':id==='alert2'?'LOS restriction set on Sat 20 Apr':'Mid-week pace action applied'
+  const impact=id==='alert1'?'£9,192':id==='alert2'?'£7,840':'£4,200'
+  addJournalEntry('Applied',label,impact,'Agreed with recommendation')
+}
+
+function dismissAlert(id){
+  document.getElementById(id).classList.add('dismissed')
+  addJournalEntry('Dismissed','Alert dismissed','—','Not applicable right now')
+}
+
+// ── RATES TABLE ──
+const ratesData=[
+  {date:'Mon 15 Apr',rem:98,total:230,current:199,rec:185,occ:48,status:'Soft',sc:'#f87171',sb:'rgba(248,113,113,0.1)',dir:'down',weekend:false},
+  {date:'Tue 16 Apr',rem:112,total:230,current:199,rec:189,occ:51,status:'Below target',sc:'#fbbf24',sb:'rgba(251,191,36,0.1)',dir:'down',weekend:false},
+  {date:'Wed 17 Apr',rem:74,total:230,current:199,rec:199,occ:68,status:'On track',sc:'#4ade80',sb:'rgba(74,222,128,0.08)',dir:'hold',weekend:false},
+  {date:'Thu 18 Apr',rem:52,total:230,current:199,rec:214,occ:77,status:'Strong',sc:'#4ade80',sb:'rgba(74,222,128,0.08)',dir:'up',weekend:false},
+  {date:'Fri 19 Apr',rem:26,total:230,current:199,rec:222,occ:89,status:'Yield now',sc:'var(--gold)',sb:'rgba(200,168,75,0.08)',dir:'up',weekend:true},
+  {date:'Sat 20 Apr',rem:34,total:230,current:199,rec:218,occ:85,status:'Yield now',sc:'var(--gold)',sb:'rgba(200,168,75,0.08)',dir:'up',weekend:true},
+  {date:'Sun 21 Apr',rem:89,total:230,current:199,rec:199,occ:61,status:'On track',sc:'#4ade80',sb:'rgba(74,222,128,0.08)',dir:'hold',weekend:false},
+]
+function renderRates(){
+  const tb=document.getElementById('ratesTableBody')
+  if(!tb)return
+  tb.innerHTML=ratesData.map(r=>{
+    const oc=r.occ>=80?'#4ade80':r.occ>=65?'#fbbf24':'#f87171'
+    const rc=r.dir==='up'?'rt-rec-up':r.dir==='down'?'rt-rec-down':'rt-rec-hold'
+    const rt=r.dir==='hold'?`£${r.rec} (hold)`:`£${r.rec}`
+    const bc=r.dir==='hold'?'rt-apply-btn hold':'rt-apply-btn'
+    const bt=r.dir==='hold'?'Holding':'Apply rate'
+    return `<tr${r.weekend?' class="rt-weekend-row"':''}><td class="rt-date-cell">${r.date}</td><td class="rt-inv">${r.rem} / ${r.total}</td><td class="rt-current">£${r.current}</td><td class="${rc}">${rt}</td><td class="rt-occ-cell"><div class="rt-occ-bar"><div class="rt-occ-fill" style="width:${r.occ}%;background:${oc}"></div></div><span class="rt-occ-pct">${r.occ}%</span></td><td><span class="rt-status-pill" style="color:${r.sc};background:${r.sb};border:1px solid ${r.sc}40">${r.status}</span></td><td><button class="${bc}" onclick="applyRate(this,'${r.date}')">${bt}</button></td></tr>`
+  }).join('')
+}
+renderRates()
+
+function applyRate(btn,date){
+  btn.textContent='✓ Applied'
+  btn.classList.add('done')
+  addJournalEntry('Applied',`Rate change applied · ${date}`,'£'+Math.floor(Math.random()*3000+800).toLocaleString(),'Rate pushed')
+}
+function switchRoomType(btn){
+  document.querySelectorAll('.rh-tab').forEach(t=>t.classList.remove('active'))
+  btn.classList.add('active')
+}
+function publishRates(){
+  const btn=document.getElementById('publishBtn')
+  btn.textContent='✓ Published to Opera'
+  btn.classList.add('done')
+  setTimeout(()=>{btn.textContent='Publish to Opera';btn.classList.remove('done')},3000)
+}
+
+// ── RFP CALCULATOR ──
+let rfpType='Corporate'
+function setRfpType(btn){
+  document.querySelectorAll('.rfp-type-btn').forEach(b=>b.classList.remove('active'))
+  btn.classList.add('active')
+  rfpType=btn.textContent.trim()
+}
+function calcRFP(){
+  const btn=document.getElementById('rfpCalcBtn')
+  btn.textContent='Calculating...'
+  btn.classList.add('loading')
+  setTimeout(()=>{
+    btn.textContent='Recalculate →'
+    btn.classList.remove('loading')
+    const rooms=parseInt(document.getElementById('rfp-rooms').value)||45
+    const nights=parseInt(document.getElementById('rfp-nights').value)||3
+    const fb=parseInt(document.getElementById('rfp-fb').value)||18000
+    const totalRN=rooms*nights
+    const em=rfpType==='Corporate'?1.0:rfpType==='Conference'?1.12:rfpType==='Wedding'?0.92:0.85
+    const opt=Math.round(199*em*0.94)
+    const disp=Math.round(totalRN*199*0.74*0.65)
+    const fbc=Math.round(fb*0.35)
+    const net=totalRN*opt+fbc-disp
+    const wp=Math.round(55+(em*10)-(totalRN>100?8:0))
+    const ra=net>20000?'prioritise':net>5000?'proceed':'review'
+    const rt={prioritise:`High-value ${rfpType.toLowerCase()} group with strong F&B potential. Proceed with optimal bid — consider complimentary meeting room to increase win probability by +8%.`,proceed:`Positive net value with reasonable win probability. Proceed at £${opt}/night.`,review:`Net value is lower than typical — displacement cost is high. Consider a higher opening rate.`}[ra]
+    const rc={prioritise:'var(--green)',proceed:'var(--gold)',review:'#f87171'}[ra]
+    document.getElementById('rfpMetrics').innerHTML=`
+      <div class="rfp-metric"><div class="rfp-metric-label">Optimal Bid Rate</div><div class="rfp-metric-val" style="color:var(--gold)">£${opt}<span style="font-size:13px;color:rgba(255,255,255,0.3);font-family:DM Sans">/night</span></div><div class="rfp-metric-sub">${totalRN} total room nights</div></div>
+      <div class="rfp-metric"><div class="rfp-metric-label">Win Probability</div><div class="rfp-metric-val" style="color:#4ade80">${wp}%</div><div class="rfp-metric-sub">At optimal rate</div></div>
+      <div class="rfp-metric"><div class="rfp-metric-label">Net Value</div><div class="rfp-metric-val" style="color:#4ade80">£${net.toLocaleString()}</div><div class="rfp-metric-sub">After displacement</div></div>
+      <div class="rfp-metric"><div class="rfp-metric-label">Displacement Cost</div><div class="rfp-metric-val" style="color:#f87171">£${disp.toLocaleString()}</div><div class="rfp-metric-sub">Transient revenue given up</div></div>`
+    document.getElementById('rfpRec').innerHTML=`<div class="rfp-rec-label" style="color:${rc}">ARIO Recommendation · ${ra.charAt(0).toUpperCase()+ra.slice(1)}</div><div class="rfp-rec-text">${rt}</div>`
+    const fl=Math.round(opt*0.87),st=Math.round(opt*1.12)
+    document.getElementById('rfpScenarios').innerHTML=`<div class="rfp-scenarios"><div class="rfp-sc-title">Pricing Scenarios</div><div class="rfp-sc-row"><span style="color:rgba(255,255,255,0.5)">Walk-away floor</span><span style="color:var(--white);font-weight:700">£${fl}/night</span><span style="color:#fbbf24">${Math.min(92,wp+22)}% win</span></div><div class="rfp-sc-row optimal"><span style="color:var(--gold);font-weight:700">★ Optimal bid</span><span style="color:var(--white);font-weight:700">£${opt}/night</span><span style="color:#4ade80;font-weight:700">${wp}% win</span></div><div class="rfp-sc-row"><span style="color:rgba(255,255,255,0.5)">Stretch target</span><span style="color:var(--white);font-weight:700">£${st}/night</span><span style="color:#f87171">${Math.max(15,wp-28)}% win</span></div></div>`
+  },800)
+}
+setTimeout(calcRFP,300)
+
+// ── COMPETITOR CARDS ──
+const competitors=[
+  {name:'The Grand',rate:228,avg:215,trend:+6.1,strategy:'yield-maximising',conf:84,color:'#6366f1',signals:['Steady rate increases','Low volatility — controlled','Confident in demand'],rec:'They see strong demand. Consider matching or slight undercut.'},
+  {name:'City Hotel',rate:162,avg:184,trend:-12.0,strategy:'distressed',conf:82,color:'#0891b2',signals:['Rate dropped >8% in 7 days','High price volatility','Likely low occupancy'],rec:'Do not follow their drop — they are panicking. Hold your rate.'},
+  {name:'Boutique Stays',rate:195,avg:193,trend:+1.0,strategy:'reactive',conf:61,color:'#7c3aed',signals:['Irregular rate changes','Following OTA demand signals','No clear strategy'],rec:'Unpredictable — monitor daily but do not mirror their moves.'},
+]
+const ss={'yield-maximising':{label:'Yield-Maximising',color:'#4ade80',bg:'rgba(74,222,128,0.1)',border:'rgba(74,222,128,0.25)'},'distressed':{label:'Distressed',color:'#f87171',bg:'rgba(248,113,113,0.1)',border:'rgba(248,113,113,0.25)'},'reactive':{label:'Reactive',color:'#a78bfa',bg:'rgba(167,139,250,0.1)',border:'rgba(167,139,250,0.25)'}}
+const cc=document.getElementById('compCards')
+if(cc){cc.innerHTML=competitors.map(c=>{
+  const s=ss[c.strategy]
+  return `<div class="comp-strategy-card"><div class="csc-stripe" style="background:${c.color}"></div><div class="csc-name">${c.name}</div><span class="csc-strategy" style="color:${s.color};background:${s.bg};border:1px solid ${s.border}">${s.label}</span><div class="csc-rate">£${c.rate}</div><div class="csc-trend" style="color:${c.trend>0?'#4ade80':'#f87171'}">${c.trend>0?'↑':''} ${c.trend>0?'+':''}${c.trend}% trend · avg £${c.avg}</div><div class="csc-signals">${c.signals.map(sig=>`<div class="csc-signal">${sig}</div>`).join('')}</div><div class="csc-rec" style="border-color:${c.color}">${c.rec}</div><div class="csc-conf">${c.conf}% confidence · ${c.rate>199?'£'+(c.rate-199)+' above your rate':'£'+(199-c.rate)+' below your rate'}</div></div>`
+}).join('')}
+
+// ── DECISION JOURNAL ──
+const journalData=[
+  {time:'08:41',decision:'Raised S1K rate to £222 on Fri 19 Apr',type:'applied',impact:'£9,192',note:'Strong OTB — agreed',outcome:'confirmed'},
+  {time:'08:39',decision:'LOS restriction set on Sat 20 Apr — 2 night min',type:'applied',impact:'£7,840',note:'Weekend pattern clear',outcome:'pending'},
+  {time:'Yesterday 14:22',decision:'Competitor rate alert dismissed — City Hotel drop',type:'dismissed',impact:'—',note:'Their drop is distress, not demand',outcome:null},
+  {time:'Yesterday 09:15',decision:'S1K rate raised to £215 on Thu 18 Apr',type:'applied',impact:'£4,200',note:'Agreed with model',outcome:'confirmed'},
+  {time:'Apr 8 11:30',decision:'Group RFP accepted — Deloitte UK 45 rooms',type:'applied',impact:'£31,240',note:'Good corporate account',outcome:'pending'},
+]
+function renderJournal(data){
+  const tb=document.getElementById('journalBody')
+  if(!tb)return
+  tb.innerHTML=data.map(r=>`<tr><td class="jt-time">${r.time}</td><td class="jt-decision">${r.decision}</td><td><span class="${r.type==='applied'?'jt-type-applied':'jt-type-dismissed'}">${r.type==='applied'?'Applied':'Dismissed'}</span></td><td class="${r.impact!=='—'?'jt-impact-pos':'jt-impact-none'}">${r.impact}</td><td class="jt-note">${r.note}</td><td>${r.outcome==='confirmed'?'<span class="jt-outcome-confirmed">✓ Confirmed</span>':r.outcome==='pending'?'<span class="jt-outcome-pending">Pending</span>':'<span style="color:rgba(255,255,255,0.2);font-size:11px">N/A</span>'}</td></tr>`).join('')
+}
+renderJournal(journalData)
+
+function addJournalEntry(type,decision,impact,note){
+  const now=new Date()
+  const time=now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})
+  journalData.unshift({time,decision,type:type.toLowerCase(),impact,note,outcome:'pending'})
+  renderJournal(journalData)
+}
+function exportJournal(){
+  const btn=event.target
+  const orig=btn.textContent
+  btn.textContent='✓ Exported'
+  setTimeout(()=>btn.textContent=orig,2000)
 }
 </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
