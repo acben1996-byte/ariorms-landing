@@ -555,28 +555,132 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
+<!-- ═══ HERO ═══ -->
+<section class="hero" style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:120px 80px 80px;overflow:hidden;position:relative">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="hero-content">
+
+  <!-- LEFT COLUMN: headline + CTA + stats -->
+  <div class="hero-content" style="position:relative;z-index:2;max-width:580px">
     <div class="hero-eyebrow fade-up">Revenue Intelligence for Hotels</div>
-    <h1 class="hero-h1 fade-up delay-1">Every metric.<br>A clear <em>action.</em></h1>
+    <h1 class="hero-h1 fade-up delay-1">The revenue brain<br>your hotel is <em>missing.</em></h1>
     <p class="hero-p fade-up delay-2">ARIO replaces the spreadsheets, the guesswork, and the 4-hour morning routine. It tells you exactly what to do with your pricing — and why — before your competitors make their move.</p>
     <div class="hero-actions fade-up delay-3">
       <a href="#pilot" class="btn-primary">Request a 60-day pilot <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#demo" class="btn-ghost">See live demo <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
+
+    <!-- Stats strip — moved up into hero -->
+    <div class="hero-proof fade-up delay-4" style="margin-top:52px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:36px;flex-wrap:wrap">
+      <div class="proof-stat"><div class="proof-num">8%</div><div class="proof-label">RevPAR uplift</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="proof-num">75%</div><div class="proof-label">Less manual work</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="proof-num">&lt;3 min</div><div class="proof-label">Group RFP decision</div></div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat"><div class="proof-num">151×</div><div class="proof-label">Average ROI</div></div>
+    </div>
   </div>
-  <div class="hero-proof fade-up delay-4">
-    <div class="proof-stat"><div class="proof-num">8%</div><div class="proof-label">Average RevPAR uplift</div></div>
-    <div class="proof-divider"></div>
-    <div class="proof-stat"><div class="proof-num">75%</div><div class="proof-label">Reduction in manual tasks</div></div>
-    <div class="proof-divider"></div>
-    <div class="proof-stat"><div class="proof-num">&lt;3 min</div><div class="proof-label">Group RFP decision time</div></div>
-    <div class="proof-divider"></div>
-    <div class="proof-stat"><div class="proof-num">151×</div><div class="proof-label">Average ROI on ARIO cost</div></div>
+
+  <!-- RIGHT COLUMN: floating dashboard mockup -->
+  <div class="fade-up delay-2" style="position:relative;z-index:2;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);transform-origin:left center">
+    <div style="background:var(--navy2);border:1px solid rgba(200,168,75,0.25);border-radius:12px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 0 1px rgba(200,168,75,0.1)">
+
+      <!-- Window chrome -->
+      <div style="background:#0d1827;border-bottom:1px solid rgba(255,255,255,0.06);padding:0 18px;height:44px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:5px">
+          <div style="width:9px;height:9px;border-radius:50%;background:#ff5f57"></div>
+          <div style="width:9px;height:9px;border-radius:50%;background:#febc2e"></div>
+          <div style="width:9px;height:9px;border-radius:50%;background:#28c840"></div>
+        </div>
+        <div style="display:flex;gap:0">
+          <div style="padding:0 14px;height:44px;display:flex;align-items:center;font-size:11px;font-weight:600;color:rgba(255,255,255,0.9);border-bottom:2px solid var(--gold)">Overview</div>
+          <div style="padding:0 14px;height:44px;display:flex;align-items:center;font-size:11px;color:rgba(255,255,255,0.3)">Alerts (2)</div>
+          <div style="padding:0 14px;height:44px;display:flex;align-items:center;font-size:11px;color:rgba(255,255,255,0.3)">Yield & Pricing</div>
+          <div style="padding:0 14px;height:44px;display:flex;align-items:center;font-size:11px;color:rgba(255,255,255,0.3)">Market Intel</div>
+        </div>
+        <div style="background:rgba(22,163,74,0.15);border:1px solid rgba(22,163,74,0.4);color:#4ade80;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.05em">● ON PACE</div>
+      </div>
+
+      <!-- Dashboard body -->
+      <div style="padding:16px;background:#0d1a32">
+
+        <!-- KPI row -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid #16a34a;border-radius:5px;padding:10px 12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px">Occupancy</div>
+            <div style="font-size:18px;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif">92.6%</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">Last night</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid #1e3a6e;border-radius:5px;padding:10px 12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px">ADR</div>
+            <div style="font-size:18px;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif">£199</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">Avg daily rate</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid #1e3a6e;border-radius:5px;padding:10px 12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px">RevPAR</div>
+            <div style="font-size:18px;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif">£184</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:2px">Per available room</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid var(--gold);border-radius:5px;padding:10px 12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px">Booking Pace</div>
+            <div style="font-size:18px;font-weight:700;color:#4ade80;font-family:'Cormorant Garamond',serif">75%</div>
+            <div style="font-size:9px;color:#4ade80;margin-top:2px">£0 ahead</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-top:2px solid #16a34a;border-radius:5px;padding:10px 12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px">7-Day Rev</div>
+            <div style="font-size:18px;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif">£482k</div>
+            <div style="font-size:9px;color:#4ade80;margin-top:2px">▲ 17% vs target</div>
+          </div>
+        </div>
+
+        <!-- Charts row -->
+        <div style="display:grid;grid-template-columns:3fr 2fr;gap:8px;margin-bottom:12px">
+          <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">14-Day Revenue Forecast</div>
+            <svg viewBox="0 0 300 60" width="100%" height="60">
+              <defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a6e" stop-opacity="0.5"/><stop offset="100%" stop-color="#1e3a6e" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,45 L21,42 L43,36 L64,32 L86,38 L107,28 L129,24 L150,18 L171,22 L193,13 L214,10 L236,16 L257,8 L279,5 L300,3 L300,60 L0,60 Z" fill="url(#hg1)"/>
+              <path d="M0,45 L21,42 L43,36 L64,32 L86,38 L107,28 L129,24 L150,18 L171,22 L193,13 L214,10 L236,16 L257,8 L279,5 L300,3" fill="none" stroke="#1e3a6e" stroke-width="1.5"/>
+              <path d="M0,46 L300,30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:12px">
+            <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Occupancy Forecast</div>
+            <svg viewBox="0 0 180 60" width="100%" height="60">
+              <defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#16a34a" stop-opacity="0.3"/><stop offset="100%" stop-color="#16a34a" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,20 L13,18 L26,14 L39,11 L52,16 L65,12 L78,9 L91,11 L104,7 L117,5 L130,9 L143,6 L156,4 L169,7 L180,5 L180,60 L0,60 Z" fill="url(#hg2)"/>
+              <path d="M0,20 L13,18 L26,14 L39,11 L52,16 L65,12 L78,9 L91,11 L104,7 L117,5 L130,9 L143,6 L156,4 L169,7 L180,5" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Alert strip -->
+        <div style="background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-left:3px solid #16a34a;border-radius:5px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="background:rgba(22,163,74,0.15);color:#4ade80;border:1px solid rgba(22,163,74,0.3);font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase">Opportunity</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.8);font-weight:600">Fri 19 Apr at 89% OTB — raise S1K to £222</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:12px;font-weight:700;color:#4ade80">£9,192</span>
+            <span style="background:var(--gold);color:var(--navy);font-size:9px;font-weight:800;padding:3px 10px;border-radius:3px;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em">Apply</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Floating badge -->
+    <div style="position:absolute;bottom:-18px;right:-18px;background:var(--navy);border:1px solid rgba(200,168,75,0.4);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
+      <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,0.6)"></div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#fff">Holiday Inn Regent's Park</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4)">Live pilot · London · 432 rooms</div>
+      </div>
+    </div>
   </div>
+
 </section>
 
 <!-- ═══ PREVIEW ═══ -->
