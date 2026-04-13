@@ -660,7 +660,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
         <div style="background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-left:3px solid #16a34a;border-radius:5px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between">
           <div style="display:flex;align-items:center;gap:10px">
             <span style="background:rgba(22,163,74,0.15);color:#4ade80;border:1px solid rgba(22,163,74,0.3);font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase">Opportunity</span>
-            <span style="font-size:11px;color:rgba(255,255,255,0.8);font-weight:600">Fri 19 Apr at 89% OTB — raise S1K to £222</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.8);font-weight:600">Fri 19 Apr at 89% OTB — raise Deluxe room to £222</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px">
             <span style="font-size:12px;font-weight:700;color:#4ade80">£9,192</span>
@@ -821,7 +821,7 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
               <div class="ar-cause"><span style="color:#4ade80;font-weight:700;margin-right:4px">▲</span><strong>Lead time premium</strong> · High OTB signals strong demand · 84%</div>
               <div class="ar-cause"><span style="color:#4ade80;font-weight:700;margin-right:4px">▲</span><strong>Rate headroom</strong> · Current ADR £198 — room to yield · 78%</div>
             </div>
-            <div class="ar-action-box"><div class="ar-action-label">Recommended Action</div><div class="ar-action-text">Raise S1K rate to £222 on Fri 19 Apr — estimated additional revenue £9,192 based on current OTB and typical same-day pickup at this occupancy level.</div></div>
+            <div class="ar-action-box"><div class="ar-action-label">Recommended Action</div><div class="ar-action-text">Raise Standard room rate to £222 on Fri 19 Apr — estimated additional revenue £9,192 based on current OTB and typical same-day pickup at this occupancy level.</div></div>
             <div class="ar-btns">
               <button class="ar-btn-apply" onclick="event.stopPropagation();applyAlert('alert1',this)">Apply Recommendation</button>
               <button class="ar-btn-dismiss" onclick="event.stopPropagation();dismissAlert('alert1')">Dismiss</button>
@@ -871,10 +871,10 @@ footer{background:var(--navy);padding:60px 80px 40px;border-top:1px solid rgba(2
     <div class="demo-panel" id="panel-rates">
       <div class="rates-wrap">
         <div class="rates-head">
-          <div class="rh-title">Rate Strategy — Next 7 Days · S1K Room Type</div>
+          <div class="rh-title">Rate Strategy — Next 7 Days · Deluxe Room Type</div>
           <div class="rh-right">
             <div class="rh-roomtabs">
-              <button class="rh-tab active" onclick="switchRoomType(this)">S1K</button>
+              <button class="rh-tab active" onclick="switchRoomType(this)">Deluxe room</button>
               <button class="rh-tab" onclick="switchRoomType(this)">S2Q</button>
               <button class="rh-tab" onclick="switchRoomType(this)">E1K</button>
             </div>
@@ -1504,10 +1504,10 @@ if(cc){cc.innerHTML=competitors.map(c=>{
 
 // ── DECISION JOURNAL ──
 const journalData=[
-  {time:'08:41',decision:'Raised S1K rate to £222 on Fri 19 Apr',type:'applied',impact:'£9,192',note:'Strong OTB — agreed',outcome:'confirmed'},
+  {time:'08:41',decision:'Raised deluxe room rate to £222 on Fri 19 Apr',type:'applied',impact:'£9,192',note:'Strong OTB — agreed',outcome:'confirmed'},
   {time:'08:39',decision:'LOS restriction set on Sat 20 Apr — 2 night min',type:'applied',impact:'£7,840',note:'Weekend pattern clear',outcome:'pending'},
   {time:'Yesterday 14:22',decision:'Competitor rate alert dismissed — City Hotel drop',type:'dismissed',impact:'—',note:'Their drop is distress, not demand',outcome:null},
-  {time:'Yesterday 09:15',decision:'S1K rate raised to £215 on Thu 18 Apr',type:'applied',impact:'£4,200',note:'Agreed with model',outcome:'confirmed'},
+  {time:'Yesterday 09:15',decision:'Standar room rate raised to £215 on Thu 18 Apr',type:'applied',impact:'£4,200',note:'Agreed with model',outcome:'confirmed'},
   {time:'Apr 8 11:30',decision:'Group RFP accepted — Deloitte UK 45 rooms',type:'applied',impact:'£31,240',note:'Good corporate account',outcome:'pending'},
 ]
 function renderJournal(data){
